@@ -3,62 +3,103 @@
   <entry>
     <title>BP神经网络</title>
     <url>/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="BP神经网络算法"><a href="#BP神经网络算法" class="headerlink" title="BP神经网络算法"></a>BP神经网络算法</h1><h4 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1. 算法原理"></a>1. 算法原理</h4><h5 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h5><p>​      <strong>人工神经网络</strong>无需事先确定输入输出之间<a href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按==误差反向传播==(简称误差反传)训练的多层前馈网络，其算法称为<a href="https://baike.baidu.com/item/BP算法">BP算法</a>，它的基本思想是==梯度下降法==，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。<br>​      <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
-<h5 id="1-2-算法分析"><a href="#1-2-算法分析" class="headerlink" title="1.2 算法分析"></a>1.2 算法分析</h5><p><strong>多层神经网络结构</strong>：</p>
+    <content><![CDATA[<h1 id="bp神经网络算法">BP神经网络算法</h1>
+<h4 id="算法原理">1. 算法原理</h4>
+<h5 id="概述">1.1 概述</h5>
+<p>​ <strong>人工神经网络</strong>无需事先确定输入输出之间<a
+href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按==误差反向传播==(简称误差反传)训练的多层前馈网络，其算法称为<a
+href="https://baike.baidu.com/item/BP算法">BP算法</a>，它的基本思想是==梯度下降法==，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。
+​ <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a
+href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
+<h5 id="算法分析">1.2 算法分析</h5>
+<p><strong>多层神经网络结构</strong>：</p>
 <p><img src="https://s2.loli.net/2022/05/01/tv5mA6lQ3fjWdIJ.png" style="zoom: 50%;" /></p>
-<p>通常一个多层神经网络由$L$​​层神经元组成，第一层称作==输入层==，最后一层称作==输出层==，中间层为==隐含层==。</p>
+<p>通常一个多层神经网络由<span
+class="math inline">\(L\)</span>​​层神经元组成，第一层称作==输入层==，最后一层称作==输出层==，中间层为==隐含层==。</p>
 <p>多层神经网络的基本组成元素是神经元，单个神经元的模型如下：</p>
 <p><img src="https://s2.loli.net/2022/05/01/bvtRcPUYwxQ8A9O.png" alt="image-20210803202615457" style="zoom:50%;" /></p>
-<p>输入层输入向量:$X=(x_1,x_2,…，x_i,…,x_m);$​</p>
-<p>第$l$​​​​​层的隐含层向量：$H^l=(h_1^l,h_2^l,…,h_j^l,…,h_{s_l}^l) (l=2,3,…,L-1,j=1,2,…,s_l);$​​​​</p>
-<p>输出层输出向量：$Y=(y_1,y_2,…,y_k,…,y_n);$​</p>
-<p>设$w_{ij}^l$为从第$l-1$层的第$i$个神经元与第$l$层的第$j$​个神经元之间的连接权重，$b_j^l$为第$l$层第$j$​个神经元的偏置。</p>
+<p>输入层输入向量:<span
+class="math inline">\(X=(x_1,x_2,...，x_i,...,x_m);\)</span>​</p>
+<p>第<span class="math inline">\(l\)</span>​​​​​层的隐含层向量：<span
+class="math inline">\(H^l=(h_1^l,h_2^l,...,h_j^l,...,h_{s_l}^l)
+(l=2,3,...,L-1,j=1,2,...,s_l);\)</span>​​​​</p>
+<p>输出层输出向量：<span
+class="math inline">\(Y=(y_1,y_2,...,y_k,...,y_n);\)</span>​</p>
+<p>设<span class="math inline">\(w_{ij}^l\)</span>为从第<span
+class="math inline">\(l-1\)</span>层的第<span
+class="math inline">\(i\)</span>个神经元与第<span
+class="math inline">\(l\)</span>层的第<span
+class="math inline">\(j\)</span>​个神经元之间的连接权重，<span
+class="math inline">\(b_j^l\)</span>为第<span
+class="math inline">\(l\)</span>层第<span
+class="math inline">\(j\)</span>​个神经元的偏置。</p>
 <p>因此得到：</p>
-<script type="math/tex; mode=display">
-h_j^l=f(net_j^l)  \\ net_j^l=\sum_{j=1}^{s_{l-1}}{w_{ij}^l+b_j^l}</script><p>其中$net_j^l$为第$l$层第$j$个神经元的输入，$f(\cdot)$​为激活函数。</p>
+<p><span class="math display">\[
+h_j^l=f(net_j^l)  \\ net_j^l=\sum_{j=1}^{s_{l-1}}{w_{ij}^l+b_j^l}
+\]</span></p>
+<p>其中<span class="math inline">\(net_j^l\)</span>为第<span
+class="math inline">\(l\)</span>层第<span
+class="math inline">\(j\)</span>个神经元的输入，<span
+class="math inline">\(f(\cdot)\)</span>​为激活函数。</p>
 <p><strong>激活函数</strong>：</p>
 <blockquote>
 <p>作用：引入非线性因素，使得模型能够较好地逼近非线性函数。</p>
 </blockquote>
 <p>BP神经网络算法常用的激活函数：</p>
 <ul>
-<li><p>Sigmod函数：</p>
-<script type="math/tex; mode=display">
-f(x)=\frac{1}{1+e^x}</script><p><img src="https://s2.loli.net/2022/05/01/gNu3h27ljwTPb6i.png" alt="image-20210804000024960" style="zoom: 15%;" /></p>
-</li>
-<li><p>Tanh函数（双曲正切函数）</p>
-<script type="math/tex; mode=display">
-f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}</script><p><img src="https://s2.loli.net/2022/05/01/c6aAzTXWSi5V1hj.png" alt="image-20210804001057704" style="zoom:15%;" /></p>
+<li><p>Sigmod函数： <span class="math display">\[
+f(x)=\frac{1}{1+e^x}
+\]</span>
+<img src="https://s2.loli.net/2022/05/01/gNu3h27ljwTPb6i.png" alt="image-20210804000024960" style="zoom: 15%;" /></p></li>
+<li><p>Tanh函数（双曲正切函数） <span class="math display">\[
+f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+\]</span></p>
+<p><img src="https://s2.loli.net/2022/05/01/c6aAzTXWSi5V1hj.png" alt="image-20210804001057704" style="zoom:15%;" /></p>
 <p><strong>偏置</strong>：</p>
 <blockquote>
-<p>作用：可以理解为加入一个与输入$X$无关的常数项，使得逼近的效果更好。</p>
+<p>作用：可以理解为加入一个与输入<span
+class="math inline">\(X\)</span>无关的常数项，使得逼近的效果更好。</p>
 </blockquote>
 <p><img src="https://s2.loli.net/2022/05/01/x7pbY5DIjO9AfNh.png" alt="img" style="zoom:50%;" /></p>
-<p>如果用$y=x$​​​去逼近，效果不如人意，相反如果加入一个常数项，使得$y=x+2$​，效果则会好很多。</p>
+<p>如果用<span
+class="math inline">\(y=x\)</span>​​​去逼近，效果不如人意，相反如果加入一个常数项，使得<span
+class="math inline">\(y=x+2\)</span>​，效果则会好很多。</p>
 <p><img src="https://s2.loli.net/2022/05/01/FUqSAPzNbrQIdvi.png" alt="img" style="zoom:50%;" /></p>
 <p><strong>误差函数</strong>:</p>
 <blockquote>
 <p>作用：衡量输出结果与期望输出的差距</p>
 </blockquote>
-<p>假设有$p$​个训练样本$\{(x(1),y(1)),(x(2),y(2)),…,(x(p),y(p))\}$​,$d(i)$​为对应$x(i)$​的期望输出，假设单个训练样本有$n$​个输出。定义误差函数：</p>
-<script type="math/tex; mode=display">
-E=\frac{1}{p}\sum_{i=1}^p{E(i)}</script><p>其中$E(i)$为单个样本的训练误差：</p>
-<script type="math/tex; mode=display">
-E(i)=\frac{1}{2}\sum_{k=1}^n(d_k(i)-y_k(i))^2</script><p>因此全局误差函数：</p>
-<script type="math/tex; mode=display">
-E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}</script></li>
-</ul>
-<p>  <strong>如何更新权重与偏置</strong>：</p>
+<p>假设有<span class="math inline">\(p\)</span>​个训练样本<span
+class="math inline">\(\{(x(1),y(1)),(x(2),y(2)),...,(x(p),y(p))\}\)</span>​,<span
+class="math inline">\(d(i)\)</span>​为对应<span
+class="math inline">\(x(i)\)</span>​的期望输出，假设单个训练样本有<span
+class="math inline">\(n\)</span>​个输出。定义误差函数： <span
+class="math display">\[
+E=\frac{1}{p}\sum_{i=1}^p{E(i)}
+\]</span> 其中<span
+class="math inline">\(E(i)\)</span>为单个样本的训练误差： <span
+class="math display">\[
+E(i)=\frac{1}{2}\sum_{k=1}^n(d_k(i)-y_k(i))^2
+\]</span> 因此全局误差函数： <span class="math display">\[
+E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}
+\]</span></p>
+<p><strong>如何更新权重与偏置</strong>：</p>
 <blockquote>
 <p>误差反向传播更新权重与偏置</p>
 </blockquote>
-<p>  一般采用梯度下降法更新权重与偏置：</p>
-<script type="math/tex; mode=display">
-  w_{ij}^l=w_{ij}^l-\alpha \frac{\partial E}{\partial w_{ij}^l} \\
-  b_{j}^l=b_j^l-\alpha \frac{\partial E}{\partial b_j^l}</script><p>  其中$\alpha $​为学习速率，$\alpha\in(0,1)$​​。BP神经网络算法关键就在与如何求解上述两个偏导数，具体推导比较繁杂，这里就不在叙述，相关参考将附在文末<a href="#第二种跳转"><sup>2</sup></a>。</p>
-<h5 id="1-3-回顾"><a href="#1-3-回顾" class="headerlink" title="1.3 回顾"></a>1.3 回顾</h5><p>最后我们再通过一个示意图，回顾BP神经网络算法的整个流程。</p>
+<p>一般采用梯度下降法更新权重与偏置： <span class="math display">\[
+w_{ij}^l=w_{ij}^l-\alpha \frac{\partial E}{\partial w_{ij}^l} \\
+b_{j}^l=b_j^l-\alpha \frac{\partial E}{\partial b_j^l}
+\]</span></p>
+<p>其中$<span
+class="math inline">\(​为学习速率，\)</span>(0,1)$​​。BP神经网络算法关键就在与如何求解上述两个偏导数，具体推导比较繁杂，这里就不在叙述，相关参考将附在文末<a
+href="#第二种跳转"><sup>2</sup></a>。</p></li>
+</ul>
+<h5 id="回顾">1.3 回顾</h5>
+<p>最后我们再通过一个示意图，回顾BP神经网络算法的整个流程。</p>
 <p><img src="https://s2.loli.net/2022/05/01/wIgxHEAbeLjPBmN.png" alt="image-20210804155659704" style="zoom: 67%;" /></p>
-<h5 id="1-4-优劣势"><a href="#1-4-优劣势" class="headerlink" title="1.4 优劣势"></a>1.4 优劣势</h5><p><strong>优势</strong>：</p>
+<h5 id="优劣势">1.4 优劣势</h5>
+<p><strong>优势</strong>：</p>
 <p>主要用于以下四个方面：</p>
 <ul>
 <li>函数逼近</li>
@@ -73,16 +114,25 @@ E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}</script></li>
 <li>网络层数、神经元个数的选取没有理论指导，主要凭借经验</li>
 <li>网络推广能力有限</li>
 </ul>
-<h4 id="2-Matlab实现"><a href="#2-Matlab实现" class="headerlink" title="2. Matlab实现"></a>2. Matlab实现</h4><h5 id="2-1-算法实现步骤"><a href="#2-1-算法实现步骤" class="headerlink" title="2.1 算法实现步骤"></a>2.1 算法实现步骤</h5><p>(1) 进行数据预处理</p>
-<p>(2) 建立BP神经网络模型</p>
-<p>(3) 利用样本进行训练</p>
-<p>(4) 返回训练结束的模型</p>
-<h5 id="2-2-案例"><a href="#2-2-案例" class="headerlink" title="2.2 案例"></a>2.2 案例</h5><p>​       在建立BP神经网络模型以及训练（即更新权重与偏置）Matlab有自带的函数，在实现BP神经网络算法的时候，我们直接调用这些函数就可以。</p>
-<p>​       为了能够更清晰地了解算法的实现过程，这里选取比较简单的数据进行演示。 </p>
+<h4 id="matlab实现">2. Matlab实现</h4>
+<h5 id="算法实现步骤">2.1 算法实现步骤</h5>
+<ol type="1">
+<li><p>进行数据预处理</p></li>
+<li><p>建立BP神经网络模型</p></li>
+<li><p>利用样本进行训练</p></li>
+<li><p>返回训练结束的模型</p></li>
+</ol>
+<h5 id="案例">2.2 案例</h5>
+<p>​
+在建立BP神经网络模型以及训练（即更新权重与偏置）Matlab有自带的函数，在实现BP神经网络算法的时候，我们直接调用这些函数就可以。</p>
+<p>​
+为了能够更清晰地了解算法的实现过程，这里选取比较简单的数据进行演示。</p>
 <p><strong>案例一</strong>：曲线拟合</p>
 <p>题目：创建BP神经网络</p>
-<p>输入向量 $P=[0,1,2,3,4,5,6,7,8,9,10];$</p>
-<p>期望输出 $T=[0,1,2,3,4,3,2,1,2,3,4];$</p>
+<p>输入向量 <span
+class="math inline">\(P=[0,1,2,3,4,5,6,7,8,9,10];\)</span></p>
+<p>期望输出 <span
+class="math inline">\(T=[0,1,2,3,4,3,2,1,2,3,4];\)</span></p>
 <p>散点图如下：</p>
 <p><img src="https://s2.loli.net/2022/05/01/t15rSj4P9Ibzulw.png" alt="img" style="zoom:50%;" /></p>
 <p>试用BP神经网络算法对上图进行拟合，并将拟合效果绘图展示。</p>
@@ -91,21 +141,38 @@ E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}</script></li>
 <p><strong>结果还不错的几个图</strong>：</p>
 <p><img src="https://s2.loli.net/2022/05/01/6jYC8JGF3tHpurM.png" style="zoom:45%;" /></p>
 <p><img src="https://s2.loli.net/2022/05/01/gkDKQJurA8mPq4X.png" alt="2" style="zoom:45%;" /></p>
-<p><img src="https://s2.loli.net/2022/05/01/xDOQSFgGa8sjXVh.png" alt="3" style="zoom:45%;" /><br>    <img src="https://s2.loli.net/2022/05/01/bmi67HagVJpDzKd.png" alt="4" style="zoom:45%;" /></p>
+<p><img src="https://s2.loli.net/2022/05/01/xDOQSFgGa8sjXVh.png" alt="3" style="zoom:45%;" />
+<img src="https://s2.loli.net/2022/05/01/bmi67HagVJpDzKd.png" alt="4" style="zoom:45%;" /></p>
 <p>由于训练的样本太少，所以结果不是很令人满意。</p>
 <p><strong>案例二</strong>：蠓虫分类</p>
-<p>题目：依据的资料是触角和翅膀的长度，已经测得了9 支Af 和6 支Apf 的数据如下：<br>Af: (1.24,1.72)，(1.36,1.74)，(1.38,1.64)，(1.38,1.82)，(1.38,1.90)，(1.40,1.70)，<br>(1.48,1.82)，(1.54,1.82)，(1.56,2.08).<br>Apf: (1.14,1.78)，(1.18,1.96)，(1.20,1.86)，(1.26,2.00)，(1.28,2.00)，(1.30,1.96).</p>
-<p>试对触角和翼长分别为(1.24,1.80)，(1.28,1.84)与(1.40,2.04)的3 个标本加以识别。</p>
+<p>题目：依据的资料是触角和翅膀的长度，已经测得了9 支Af 和6 支Apf
+的数据如下： Af:
+(1.24,1.72)，(1.36,1.74)，(1.38,1.64)，(1.38,1.82)，(1.38,1.90)，(1.40,1.70)，
+(1.48,1.82)，(1.54,1.82)，(1.56,2.08). Apf:
+(1.14,1.78)，(1.18,1.96)，(1.20,1.86)，(1.26,2.00)，(1.28,2.00)，(1.30,1.96).</p>
+<p>试对触角和翼长分别为(1.24,1.80)，(1.28,1.84)与(1.40,2.04)的3
+个标本加以识别。</p>
 <p><strong>Matlab代码</strong>：</p>
 <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clearvars; close all; <span class="comment">%清空工作环境</span></span><br><span class="line"><span class="comment">%导入数据，第一列为触角长度，第二列为翅膀长度</span></span><br><span class="line">x_1 = [<span class="number">1.24</span>, <span class="number">1.72</span>; <span class="number">1.36</span>, <span class="number">1.74</span>; <span class="number">1.38</span>, <span class="number">1.64</span>; <span class="number">1.38</span>, <span class="number">1.82</span>;</span><br><span class="line">    <span class="number">1.38</span>, <span class="number">1.90</span>; <span class="number">1.40</span>, <span class="number">1.70</span>; <span class="number">1.48</span>, <span class="number">1.82</span>; <span class="number">1.54</span>, <span class="number">1.82</span>; <span class="number">1.56</span>, <span class="number">2.08</span>]; <span class="comment">%Af蠓虫</span></span><br><span class="line">x_2 = [<span class="number">1.14</span>, <span class="number">1.78</span>; <span class="number">1.18</span>, <span class="number">1.96</span>; <span class="number">1.20</span>, <span class="number">1.86</span>; <span class="number">1.26</span>, <span class="number">2.00</span>; <span class="number">1.28</span>, <span class="number">2.00</span>;</span><br><span class="line">    <span class="number">1.30</span>, <span class="number">1.96</span>]; <span class="comment">%Apf蠓虫</span></span><br><span class="line">x = [x_1; x_2]&#x27;; <span class="comment">%合并转置，因为feedforwardnet函数以一列为单个样本</span></span><br><span class="line"></span><br><span class="line">goal = [<span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">9</span>), <span class="built_in">zeros</span>(<span class="number">1</span>, <span class="number">6</span>); <span class="built_in">zeros</span>(<span class="number">1</span>, <span class="number">9</span>), <span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">6</span>)]; <span class="comment">%(1,0)表示为</span></span><br><span class="line"><span class="comment">%Af蠓虫，(0,1)表示Apf蠓虫</span></span><br><span class="line">x_recognize = [<span class="number">1.24</span>, <span class="number">1.80</span>; <span class="number">1.28</span>, <span class="number">1.84</span>; <span class="number">1.40</span>, <span class="number">2.04</span>]&#x27;; <span class="comment">%识别的样本</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">plot</span>(x_1(:, <span class="number">1</span>), x_1(:, <span class="number">2</span>), <span class="string">&#x27;ro&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;Af&#x27;</span>); <span class="comment">%绘制Af的散点图</span></span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(x_2(:, <span class="number">1</span>), x_2(:, <span class="number">2</span>), <span class="string">&#x27;bo&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;Apf&#x27;</span>); <span class="comment">%绘制Apf的散点图</span></span><br><span class="line"><span class="built_in">plot</span>(x_recognize(<span class="number">1</span>, :), x_recognize(<span class="number">2</span>, :), <span class="string">&#x27;yo&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;识别&#x27;</span> ); <span class="comment">%绘制识别样本的散点图</span></span><br><span class="line">xlabel(<span class="string">&#x27;触角长度&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;翅膀长度&#x27;</span>);</span><br><span class="line"><span class="built_in">legend</span>;</span><br><span class="line"></span><br><span class="line">net = feedforwardnet([<span class="number">3</span>, <span class="number">2</span>], <span class="string">&#x27;trainlm&#x27;</span>); <span class="comment">%两层隐含层，相应神经元个数分别为3和2，采用L-M优化算法，效果比较好</span></span><br><span class="line">net.trainParam.max_fail = <span class="number">1000</span>; <span class="comment">%连续1000次误差不下降，停止训练</span></span><br><span class="line">net.trainParam.lr = <span class="number">0.05</span>; <span class="comment">%学习速率</span></span><br><span class="line">net.trainParam.epochs = <span class="number">10000</span>; <span class="comment">%最大训练次数</span></span><br><span class="line">net.trainParam.goal = <span class="number">1e-15</span>; <span class="comment">%最小误差，达到该精度，停止训练</span></span><br><span class="line">net.trainParam.show = <span class="number">50</span>; <span class="comment">%每50次展示训练结果</span></span><br><span class="line">net = train(net, x, goal); <span class="comment">%训练</span></span><br><span class="line">y0 = sim(net, x) <span class="comment">%输出</span></span><br><span class="line">perf = perform(net, goal, y0)<span class="comment">%误差</span></span><br><span class="line">ym = sim(net, x_recognize) <span class="comment">%识别</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>下图是蠓虫的散点图，可以看出这三个样本还是比较难分类的，肉眼几乎很难判断。利用BP神经网络算法得到的结果有时候也会有比较大的差异，这也很正常，仅通过触角和翅膀长度确实不易分辨。</p>
 <p><img src="https://s2.loli.net/2022/05/01/KW4w6ZEHdrvGQXM.png" style="zoom:50%;" /></p>
 <p>这是训练误差比较低情况下的一个输出，显示识别样本中第一、第二为Af类型的蠓虫，第三为Apf类型的蠓虫。</p>
-<p><img src="https://s2.loli.net/2022/05/01/t1WmHSNoKn6BVRx.png" alt="image-20210804215106236"></p>
-<h4 id="3-参考来源"><a href="#3-参考来源" class="headerlink" title="3. 参考来源"></a><strong>3. 参考来源</strong></h4><p>[1] <a href="https://baike.baidu.com/item/BP神经网络/4581827">BP神经网络_百度百科 (baidu.com)</a></p>
-<p>[2] <a href="https://www.cnblogs.com/biaoyu/p/4591304.html#!comments">BP神经网络推导过程详解 - Alex Yu - 博客园 (cnblogs.com)</a><a name="第二种跳转"> </a></p>
-<p>[3] <a href="https://www.bilibili.com/video/BV1A4411x76J">专题 通过四个matlab建模案例彻底精通BP神经网络_哔哩哔哩_bilibili</a></p>
-<p>[4] <a href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=8384977427461027422">最容易听懂的BP神经网络教程——萌新入门首选课_哔哩哔哩_bilibili</a></p>
+<figure>
+<img src="https://s2.loli.net/2022/05/01/t1WmHSNoKn6BVRx.png"
+alt="image-20210804215106236" />
+<figcaption aria-hidden="true">image-20210804215106236</figcaption>
+</figure>
+<h4 id="参考来源"><strong>3. 参考来源</strong></h4>
+<p>[1] <a
+href="https://baike.baidu.com/item/BP神经网络/4581827">BP神经网络_百度百科
+(baidu.com)</a></p>
+<p>[2] <a
+href="https://www.cnblogs.com/biaoyu/p/4591304.html#!comments">BP神经网络推导过程详解
+- Alex Yu - 博客园 (cnblogs.com)</a><a name="第二种跳转"> </a></p>
+<p>[3] <a href="https://www.bilibili.com/video/BV1A4411x76J">专题
+通过四个matlab建模案例彻底精通BP神经网络_哔哩哔哩_bilibili</a></p>
+<p>[4] <a
+href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=8384977427461027422">最容易听懂的BP神经网络教程----萌新入门首选课_哔哩哔哩_bilibili</a></p>
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
