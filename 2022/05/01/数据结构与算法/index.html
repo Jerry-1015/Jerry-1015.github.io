@@ -20,25 +20,44 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="人生如逆旅，我亦是行人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="岁月飞扬の博客">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="数据结构与算法BP神经网络算法1. 算法原理1.1 概述​      人工神经网络无需事先确定输入输出之间映射关系的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为BP算法，它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BP神经网络">
+<meta property="og:url" content="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="岁月飞扬の博客">
-<meta property="og:description" content="人生如逆旅，我亦是行人">
+<meta property="og:description" content="数据结构与算法BP神经网络算法1. 算法原理1.1 概述​      人工神经网络无需事先确定输入输出之间映射关系的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为BP算法，它">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955813.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957655.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957165.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957092.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957609.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957316.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957839.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121000098.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121001769.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121001367.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121002830.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121003814.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121003811.png">
+<meta property="article:published_time" content="2022-05-01T11:56:44.332Z">
+<meta property="article:modified_time" content="2022-05-01T12:01:04.426Z">
 <meta property="article:author" content="Jerry">
+<meta property="article:tag" content="Testing">
+<meta property="article:tag" content="Another Tag">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/","path":"2022/05/01/数据结构与算法/","title":"BP神经网络"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>岁月飞扬の博客</title>
+<title>BP神经网络 | 岁月飞扬の博客</title>
   
 
 
@@ -68,7 +87,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">岁月飞扬の博客</h1>
+      <p class="site-title">岁月飞扬の博客</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">记录学习和感悟</p>
@@ -101,7 +120,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -114,6 +133,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">BP神经网络算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">1.2 算法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">1.3 回顾</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-%E4%BC%98%E5%8A%A3%E5%8A%BF"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">1.4 优劣势</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Matlab%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. Matlab实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">2.1 算法实现步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-%E6%A1%88%E4%BE%8B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.2 案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 参考来源</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,16 +204,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -207,13 +228,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 岁月飞扬の博客">
+      <meta itemprop="name" content="BP神经网络 | 岁月飞扬の博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">BP神经网络</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          BP神经网络
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -246,7 +267,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="BP神经网络算法"><a href="#BP神经网络算法" class="headerlink" title="BP神经网络算法"></a>BP神经网络算法</h3><h4 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1. 算法原理"></a>1. 算法原理</h4><h5 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h5><p>​      <strong>人工神经网络</strong>无需事先确定输入输出之间<a href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/BP%E7%AE%97%E6%B3%95">BP算法</a>，它的基本思想是&#x3D;&#x3D;梯度下降法&#x3D;&#x3D;，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。<br>​      <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
+        <h2 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h2><h3 id="BP神经网络算法"><a href="#BP神经网络算法" class="headerlink" title="BP神经网络算法"></a>BP神经网络算法</h3><h4 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1. 算法原理"></a>1. 算法原理</h4><h5 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h5><p>​      <strong>人工神经网络</strong>无需事先确定输入输出之间<a href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/BP%E7%AE%97%E6%B3%95">BP算法</a>，它的基本思想是&#x3D;&#x3D;梯度下降法&#x3D;&#x3D;，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。<br>​      <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
 <h5 id="1-2-算法分析"><a href="#1-2-算法分析" class="headerlink" title="1.2 算法分析"></a>1.2 算法分析</h5><p><strong>多层神经网络结构</strong>：</p>
 <img src="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png" style="zoom: 50%;" />
 
@@ -358,7 +379,6 @@
 <p>[3] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1A4411x76J">专题 通过四个matlab建模案例彻底精通BP神经网络_哔哩哔哩_bilibili</a></p>
 <p>[4] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&seid=8384977427461027422">最容易听懂的BP神经网络教程—-萌新入门首选课_哔哩哔哩_bilibili</a></p>
 
-      
     </div>
 
     
@@ -366,11 +386,17 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/Testing/" rel="tag"># Testing</a>
+              <a href="/tags/Another-Tag/" rel="tag"># Another Tag</a>
+          </div>
+
+        
+
     </footer>
   </article>
 </div>
+
 
 
 
