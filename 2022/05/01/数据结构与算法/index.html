@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/twig.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/twig.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/twig.png">
+  <link rel="mask-icon" href="/images/twig.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="BP神经网络算法1. 算法原理1.1 概述​      人工神经网络无需事先确定输入输出之间映射关系的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为BP算法，它的基本思想是&#x3D;&#x3D;梯度下降法&#x3D;&#x3D;，利用梯度搜索技术，以期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BP神经网络">
+<meta property="og:url" content="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="岁月飞扬の博客">
+<meta property="og:description" content="BP神经网络算法1. 算法原理1.1 概述​      人工神经网络无需事先确定输入输出之间映射关系的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按&#x3D;&#x3D;误差反向传播&#x3D;&#x3D;(简称误差反传)训练的多层前馈网络，其算法称为BP算法，它的基本思想是&#x3D;&#x3D;梯度下降法&#x3D;&#x3D;，利用梯度搜索技术，以期">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955813.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957655.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957165.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957092.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957609.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957316.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120957839.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121000098.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121001769.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121001367.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121002830.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121003814.png">
+<meta property="og:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112121003811.png">
+<meta property="article:published_time" content="2022-05-01T11:56:44.332Z">
+<meta property="article:modified_time" content="2022-05-01T12:31:02.747Z">
+<meta property="article:author" content="Jerry">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/","path":"2022/05/01/数据结构与算法/","title":"BP神经网络"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BP神经网络 | 岁月飞扬の博客</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">岁月飞扬の博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习和感悟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">BP神经网络算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.0.0.1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">1.0.0.1.2.</span> <span class="nav-text">1.2 算法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.0.0.1.3.</span> <span class="nav-text">1.3 回顾</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-%E4%BC%98%E5%8A%A3%E5%8A%BF"><span class="nav-number">1.0.0.1.4.</span> <span class="nav-text">1.4 优劣势</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Matlab%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. Matlab实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">2.1 算法实现步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-%E6%A1%88%E4%BE%8B"><span class="nav-number">1.0.0.2.2.</span> <span class="nav-text">2.2 案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 参考来源</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry"
+      src="/images/twig.png">
+  <p class="site-author-name" itemprop="name">Jerry</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Jerry-1015" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Jerry-1015" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/781467164@qq.com" title="E-Mail → 781467164@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.js.org/docs/" title="https:&#x2F;&#x2F;theme-next.js.org&#x2F;docs&#x2F;" rel="noopener" target="_blank">Next主题官方文档</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://stackoverflow.com/questions" title="https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions" rel="noopener" target="_blank">stackoverfow</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/twig.png">
+      <meta itemprop="name" content="Jerry">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岁月飞扬の博客">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BP神经网络 | 岁月飞扬の博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BP神经网络
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-01 19:56:44 / 修改时间：20:31:02" itemprop="dateCreated datePublished" datetime="2022-05-01T19:56:44+08:00">2022-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="BP神经网络算法"><a href="#BP神经网络算法" class="headerlink" title="BP神经网络算法"></a>BP神经网络算法</h1><h4 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1. 算法原理"></a>1. 算法原理</h4><h5 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h5><p>​      <strong>人工神经网络</strong>无需事先确定输入输出之间<a href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按==误差反向传播==(简称误差反传)训练的多层前馈网络，其算法称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/BP算法">BP算法</a>，它的基本思想是==梯度下降法==，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。<br>​      <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
+<h5 id="1-2-算法分析"><a href="#1-2-算法分析" class="headerlink" title="1.2 算法分析"></a>1.2 算法分析</h5><p><strong>多层神经网络结构</strong>：</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120955369.png" style="zoom: 50%;" /></p>
+<p>通常一个多层神经网络由$L$​​层神经元组成，第一层称作==输入层==，最后一层称作==输出层==，中间层为==隐含层==。</p>
+<p>多层神经网络的基本组成元素是神经元，单个神经元的模型如下：</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120955813.png" alt="image-20210803202615457" style="zoom:50%;" /></p>
+<p>输入层输入向量:$X=(x_1,x_2,…，x_i,…,x_m);$​</p>
+<p>第$l$​​​​​层的隐含层向量：$H^l=(h_1^l,h_2^l,…,h_j^l,…,h_{s_l}^l) (l=2,3,…,L-1,j=1,2,…,s_l);$​​​​</p>
+<p>输出层输出向量：$Y=(y_1,y_2,…,y_k,…,y_n);$​</p>
+<p>设$w_{ij}^l$为从第$l-1$层的第$i$个神经元与第$l$层的第$j$​个神经元之间的连接权重，$b_j^l$为第$l$层第$j$​个神经元的偏置。</p>
+<p>因此得到：</p>
+<script type="math/tex; mode=display">
+h_j^l=f(net_j^l)  \\ net_j^l=\sum_{j=1}^{s_{l-1}}{w_{ij}^l+b_j^l}</script><p>其中$net_j^l$为第$l$层第$j$个神经元的输入，$f(\cdot)$​为激活函数。</p>
+<p><strong>激活函数</strong>：</p>
+<blockquote>
+<p>作用：引入非线性因素，使得模型能够较好地逼近非线性函数。</p>
+</blockquote>
+<p>BP神经网络算法常用的激活函数：</p>
+<ul>
+<li><p>Sigmod函数：</p>
+<script type="math/tex; mode=display">
+f(x)=\frac{1}{1+e^x}</script><p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957655.png" alt="image-20210804000024960" style="zoom: 15%;" /></p>
+</li>
+<li><p>Tanh函数（双曲正切函数）</p>
+<script type="math/tex; mode=display">
+f(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}</script><p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957165.png" alt="image-20210804001057704" style="zoom:15%;" /></p>
+<p><strong>偏置</strong>：</p>
+<blockquote>
+<p>作用：可以理解为加入一个与输入$X$无关的常数项，使得逼近的效果更好。</p>
+</blockquote>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957092.png" alt="img" style="zoom:50%;" /></p>
+<p>如果用$y=x$​​​去逼近，效果不如人意，相反如果加入一个常数项，使得$y=x+2$​，效果则会好很多。</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957609.png" alt="img" style="zoom:50%;" /></p>
+<p><strong>误差函数</strong>:</p>
+<blockquote>
+<p>作用：衡量输出结果与期望输出的差距</p>
+</blockquote>
+<p>假设有$p$​个训练样本$\{(x(1),y(1)),(x(2),y(2)),…,(x(p),y(p))\}$​,$d(i)$​为对应$x(i)$​的期望输出，假设单个训练样本有$n$​个输出。定义误差函数：</p>
+<script type="math/tex; mode=display">
+E=\frac{1}{p}\sum_{i=1}^p{E(i)}</script><p>其中$E(i)$为单个样本的训练误差：</p>
+<script type="math/tex; mode=display">
+E(i)=\frac{1}{2}\sum_{k=1}^n(d_k(i)-y_k(i))^2</script><p>因此全局误差函数：</p>
+<script type="math/tex; mode=display">
+E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}</script></li>
+</ul>
+<p>  <strong>如何更新权重与偏置</strong>：</p>
+<blockquote>
+<p>误差反向传播更新权重与偏置</p>
+</blockquote>
+<p>  一般采用梯度下降法更新权重与偏置：</p>
+<script type="math/tex; mode=display">
+  w_{ij}^l=w_{ij}^l-\alpha \frac{\partial E}{\partial w_{ij}^l} \\
+  b_{j}^l=b_j^l-\alpha \frac{\partial E}{\partial b_j^l}</script><p>  其中$\alpha $​为学习速率，$\alpha\in(0,1)$​​。BP神经网络算法关键就在与如何求解上述两个偏导数，具体推导比较繁杂，这里就不在叙述，相关参考将附在文末<a href="#第二种跳转"><sup>2</sup></a>。</p>
+<h5 id="1-3-回顾"><a href="#1-3-回顾" class="headerlink" title="1.3 回顾"></a>1.3 回顾</h5><p>最后我们再通过一个示意图，回顾BP神经网络算法的整个流程。</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957316.png" alt="image-20210804155659704" style="zoom: 67%;" /></p>
+<h5 id="1-4-优劣势"><a href="#1-4-优劣势" class="headerlink" title="1.4 优劣势"></a>1.4 优劣势</h5><p><strong>优势</strong>：</p>
+<p>主要用于以下四个方面：</p>
+<ul>
+<li>函数逼近</li>
+<li>模式识别</li>
+<li>分类</li>
+<li>数据压缩</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>学习速度慢，需要多次学习才能收敛</li>
+<li>采用梯度下降法，容易陷入局部最小值</li>
+<li>网络层数、神经元个数的选取没有理论指导，主要凭借经验</li>
+<li>网络推广能力有限</li>
+</ul>
+<h4 id="2-Matlab实现"><a href="#2-Matlab实现" class="headerlink" title="2. Matlab实现"></a>2. Matlab实现</h4><h5 id="2-1-算法实现步骤"><a href="#2-1-算法实现步骤" class="headerlink" title="2.1 算法实现步骤"></a>2.1 算法实现步骤</h5><p>(1) 进行数据预处理</p>
+<p>(2) 建立BP神经网络模型</p>
+<p>(3) 利用样本进行训练</p>
+<p>(4) 返回训练结束的模型</p>
+<h5 id="2-2-案例"><a href="#2-2-案例" class="headerlink" title="2.2 案例"></a>2.2 案例</h5><p>​       在建立BP神经网络模型以及训练（即更新权重与偏置）Matlab有自带的函数，在实现BP神经网络算法的时候，我们直接调用这些函数就可以。</p>
+<p>​       为了能够更清晰地了解算法的实现过程，这里选取比较简单的数据进行演示。 </p>
+<p><strong>案例一</strong>：曲线拟合</p>
+<p>题目：创建BP神经网络</p>
+<p>输入向量 $P=[0,1,2,3,4,5,6,7,8,9,10];$</p>
+<p>期望输出 $T=[0,1,2,3,4,3,2,1,2,3,4];$</p>
+<p>散点图如下：</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112120957839.png" alt="img" style="zoom:50%;" /></p>
+<p>试用BP神经网络算法对上图进行拟合，并将拟合效果绘图展示。</p>
+<p><strong>Matlab代码</strong>：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">close all; clearvars; clear; <span class="comment">%清空工作环境</span></span><br><span class="line">P = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line">T = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">%由于feedforwardnet函数自动对样本进行归一化和划分训练、验证、测试集,</span></span><br><span class="line"><span class="comment">%所以就不用手动将数据进行归一化处理，但不知道有没有打乱顺序</span></span><br><span class="line"><span class="comment">% n=size(P,2); temp=randperm(n); P_train=P(temp(1:8));</span></span><br><span class="line"><span class="comment">% T_train=T(temp(1:8)); P_test=P(temp(9:end)); T_test=T(temp(9:end));</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% [p_train,p_input]=mapminmax(P_train,0,1);</span></span><br><span class="line"><span class="comment">% [t_train,t_output]=mapminmax(T_train,0,1);</span></span><br><span class="line"><span class="comment">% p_test=mapminmax(P_test,p_input);</span></span><br><span class="line">net = feedforwardnet(<span class="number">5</span>, <span class="string">&#x27;traingd&#x27;</span>); </span><br><span class="line"><span class="comment">%是&#x27;5&#x27;是指隐含层有5个神经元，这里只有一个隐含层，多个隐含层神经元的个数设置为[5,3,...]</span></span><br><span class="line"></span><br><span class="line">net.trainParam.lr = <span class="number">0.01</span>; <span class="comment">%学习速率</span></span><br><span class="line">net.trainParam.epochs = <span class="number">10000</span>; <span class="comment">%最大训练次数</span></span><br><span class="line">net.trainParam.goal = <span class="number">1e-6</span>; <span class="comment">%最小误差，达到该精度，停止训练</span></span><br><span class="line">net.trainParam.show = <span class="number">50</span>; <span class="comment">%每50次展示训练结果</span></span><br><span class="line">net = train(net, P, T); <span class="comment">%训练</span></span><br><span class="line">Y = net(P); <span class="comment">%输出</span></span><br><span class="line">perf = perform(net, Y, T);<span class="comment">%误差</span></span><br><span class="line"><span class="built_in">plot</span>(P, T, P, Y, <span class="string">&#x27;r-&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>结果还不错的几个图</strong>：</p>
+<center class='half'>
+    <img src="https://gitee.com/jerry_1015/typora/raw/master/202112121000098.png" style="zoom:45%;" />
+<img src="https://gitee.com/jerry_1015/typora/raw/master/202112121001769.png" alt="2" style="zoom:45%;" />
+    <br/>
+<img src="https://gitee.com/jerry_1015/typora/raw/master/202112121001367.png" alt="3" style="zoom:45%;" />
+    <img src="https://gitee.com/jerry_1015/typora/raw/master/202112121002830.png" alt="4" style="zoom:45%;" />
+</center>
+
+<p> 由于训练的样本太少，所以结果不是很令人满意。</p>
+<p><strong>案例二</strong>：蠓虫分类</p>
+<p>题目：依据的资料是触角和翅膀的长度，已经测得了9 支Af 和6 支Apf 的数据如下：<br>Af: (1.24,1.72)，(1.36,1.74)，(1.38,1.64)，(1.38,1.82)，(1.38,1.90)，(1.40,1.70)，<br>(1.48,1.82)，(1.54,1.82)，(1.56,2.08).<br>Apf: (1.14,1.78)，(1.18,1.96)，(1.20,1.86)，(1.26,2.00)，(1.28,2.00)，(1.30,1.96).</p>
+<p>试对触角和翼长分别为(1.24,1.80)，(1.28,1.84)与(1.40,2.04)的3 个标本加以识别。</p>
+<p><strong>Matlab代码</strong>：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">clearvars; close all; <span class="comment">%清空工作环境</span></span><br><span class="line"><span class="comment">%导入数据，第一列为触角长度，第二列为翅膀长度</span></span><br><span class="line">x_1 = [<span class="number">1.24</span>, <span class="number">1.72</span>; <span class="number">1.36</span>, <span class="number">1.74</span>; <span class="number">1.38</span>, <span class="number">1.64</span>; <span class="number">1.38</span>, <span class="number">1.82</span>;</span><br><span class="line">    <span class="number">1.38</span>, <span class="number">1.90</span>; <span class="number">1.40</span>, <span class="number">1.70</span>; <span class="number">1.48</span>, <span class="number">1.82</span>; <span class="number">1.54</span>, <span class="number">1.82</span>; <span class="number">1.56</span>, <span class="number">2.08</span>]; <span class="comment">%Af蠓虫</span></span><br><span class="line">x_2 = [<span class="number">1.14</span>, <span class="number">1.78</span>; <span class="number">1.18</span>, <span class="number">1.96</span>; <span class="number">1.20</span>, <span class="number">1.86</span>; <span class="number">1.26</span>, <span class="number">2.00</span>; <span class="number">1.28</span>, <span class="number">2.00</span>;</span><br><span class="line">    <span class="number">1.30</span>, <span class="number">1.96</span>]; <span class="comment">%Apf蠓虫</span></span><br><span class="line">x = [x_1; x_2]&#x27;; <span class="comment">%合并转置，因为feedforwardnet函数以一列为单个样本</span></span><br><span class="line"></span><br><span class="line">goal = [<span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">9</span>), <span class="built_in">zeros</span>(<span class="number">1</span>, <span class="number">6</span>); <span class="built_in">zeros</span>(<span class="number">1</span>, <span class="number">9</span>), <span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">6</span>)]; <span class="comment">%(1,0)表示为</span></span><br><span class="line"><span class="comment">%Af蠓虫，(0,1)表示Apf蠓虫</span></span><br><span class="line">x_recognize = [<span class="number">1.24</span>, <span class="number">1.80</span>; <span class="number">1.28</span>, <span class="number">1.84</span>; <span class="number">1.40</span>, <span class="number">2.04</span>]&#x27;; <span class="comment">%识别的样本</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">plot</span>(x_1(:, <span class="number">1</span>), x_1(:, <span class="number">2</span>), <span class="string">&#x27;ro&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;Af&#x27;</span>); <span class="comment">%绘制Af的散点图</span></span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(x_2(:, <span class="number">1</span>), x_2(:, <span class="number">2</span>), <span class="string">&#x27;bo&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;Apf&#x27;</span>); <span class="comment">%绘制Apf的散点图</span></span><br><span class="line"><span class="built_in">plot</span>(x_recognize(<span class="number">1</span>, :), x_recognize(<span class="number">2</span>, :), <span class="string">&#x27;yo&#x27;</span>, <span class="string">&#x27;DisplayName&#x27;</span>, <span class="string">&#x27;识别&#x27;</span> ); <span class="comment">%绘制识别样本的散点图</span></span><br><span class="line">xlabel(<span class="string">&#x27;触角长度&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;翅膀长度&#x27;</span>);</span><br><span class="line"><span class="built_in">legend</span>;</span><br><span class="line"></span><br><span class="line">net = feedforwardnet([<span class="number">3</span>, <span class="number">2</span>], <span class="string">&#x27;trainlm&#x27;</span>); <span class="comment">%两层隐含层，相应神经元个数分别为3和2，采用L-M优化算法，效果比较好</span></span><br><span class="line">net.trainParam.max_fail = <span class="number">1000</span>; <span class="comment">%连续1000次误差不下降，停止训练</span></span><br><span class="line">net.trainParam.lr = <span class="number">0.05</span>; <span class="comment">%学习速率</span></span><br><span class="line">net.trainParam.epochs = <span class="number">10000</span>; <span class="comment">%最大训练次数</span></span><br><span class="line">net.trainParam.goal = <span class="number">1e-15</span>; <span class="comment">%最小误差，达到该精度，停止训练</span></span><br><span class="line">net.trainParam.show = <span class="number">50</span>; <span class="comment">%每50次展示训练结果</span></span><br><span class="line">net = train(net, x, goal); <span class="comment">%训练</span></span><br><span class="line">y0 = sim(net, x) <span class="comment">%输出</span></span><br><span class="line">perf = perform(net, goal, y0)<span class="comment">%误差</span></span><br><span class="line">ym = sim(net, x_recognize) <span class="comment">%识别</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>下图是蠓虫的散点图，可以看出这三个样本还是比较难分类的，肉眼几乎很难判断。利用BP神经网络算法得到的结果有时候也会有比较大的差异，这也很正常，仅通过触角和翅膀长度确实不易分辨。</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112121003814.png" style="zoom:50%;" /></p>
+<p>这是训练误差比较低情况下的一个输出，显示识别样本中第一、第二为Af类型的蠓虫，第三为Apf类型的蠓虫。</p>
+<p><img src="https://gitee.com/jerry_1015/typora/raw/master/202112121003811.png" alt="image-20210804215106236"></p>
+<h4 id="3-参考来源"><a href="#3-参考来源" class="headerlink" title="3. 参考来源"></a><strong>3. 参考来源</strong></h4><p>[1] <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/BP神经网络/4581827">BP神经网络_百度百科 (baidu.com)</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/biaoyu/p/4591304.html#!comments">BP神经网络推导过程详解 - Alex Yu - 博客园 (cnblogs.com)</a><a name="第二种跳转"> </a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1A4411x76J">专题 通过四个matlab建模案例彻底精通BP神经网络_哔哩哔哩_bilibili</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=8384977427461027422">最容易听懂的BP神经网络教程——萌新入门首选课_哔哩哔哩_bilibili</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
