@@ -228,7 +228,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-01 19:56:44 / 修改时间：21:53:13" itemprop="dateCreated datePublished" datetime="2022-05-01T19:56:44+08:00">2022-05-01</time>
+      <time title="创建时间：2022-05-01 19:56:44 / 修改时间：21:56:41" itemprop="dateCreated datePublished" datetime="2022-05-01T19:56:44+08:00">2022-05-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,15 +336,10 @@ E=\frac{1}{2p}\sum_{i=1}^p\sum_{k=1}^n{(d_k(i)-y_k(i))^2}</script></li>
 <p><strong>Matlab代码</strong>：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">close all; clearvars; clear; <span class="comment">%清空工作环境</span></span><br><span class="line">P = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line">T = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="comment">%由于feedforwardnet函数自动对样本进行归一化和划分训练、验证、测试集,</span></span><br><span class="line"><span class="comment">%所以就不用手动将数据进行归一化处理，但不知道有没有打乱顺序</span></span><br><span class="line"><span class="comment">% n=size(P,2); temp=randperm(n); P_train=P(temp(1:8));</span></span><br><span class="line"><span class="comment">% T_train=T(temp(1:8)); P_test=P(temp(9:end)); T_test=T(temp(9:end));</span></span><br><span class="line"><span class="comment">%</span></span><br><span class="line"><span class="comment">% [p_train,p_input]=mapminmax(P_train,0,1);</span></span><br><span class="line"><span class="comment">% [t_train,t_output]=mapminmax(T_train,0,1);</span></span><br><span class="line"><span class="comment">% p_test=mapminmax(P_test,p_input);</span></span><br><span class="line">net = feedforwardnet(<span class="number">5</span>, <span class="string">&#x27;traingd&#x27;</span>); </span><br><span class="line"><span class="comment">%是&#x27;5&#x27;是指隐含层有5个神经元，这里只有一个隐含层，多个隐含层神经元的个数设置为[5,3,...]</span></span><br><span class="line"></span><br><span class="line">net.trainParam.lr = <span class="number">0.01</span>; <span class="comment">%学习速率</span></span><br><span class="line">net.trainParam.epochs = <span class="number">10000</span>; <span class="comment">%最大训练次数</span></span><br><span class="line">net.trainParam.goal = <span class="number">1e-6</span>; <span class="comment">%最小误差，达到该精度，停止训练</span></span><br><span class="line">net.trainParam.show = <span class="number">50</span>; <span class="comment">%每50次展示训练结果</span></span><br><span class="line">net = train(net, P, T); <span class="comment">%训练</span></span><br><span class="line">Y = net(P); <span class="comment">%输出</span></span><br><span class="line">perf = perform(net, Y, T);<span class="comment">%误差</span></span><br><span class="line"><span class="built_in">plot</span>(P, T, P, Y, <span class="string">&#x27;r-&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>结果还不错的几个图</strong>：</p>
-<center class='half'>
-    <img src="https://gitee.com/jerry_1015/typora/raw/master/202112121000098.png" style="zoom:45%;" />
-<img src="https://gitee.com/jerry_1015/typora/raw/master/202112121001769.png" alt="2" style="zoom:45%;" />
-    <br/>
-<img src="https://gitee.com/jerry_1015/typora/raw/master/202112121001367.png" alt="3" style="zoom:45%;" />
-    <img src="https://gitee.com/jerry_1015/typora/raw/master/202112121002830.png" alt="4" style="zoom:45%;" />
-</center>
-
-<p> 由于训练的样本太少，所以结果不是很令人满意。</p>
+<p><img src="https://s2.loli.net/2022/05/01/6jYC8JGF3tHpurM.png" style="zoom:45%;" /></p>
+<p><img src="https://s2.loli.net/2022/05/01/gkDKQJurA8mPq4X.png" alt="2" style="zoom:45%;" /></p>
+<p><img src="https://s2.loli.net/2022/05/01/xDOQSFgGa8sjXVh.png" alt="3" style="zoom:45%;" /><br>    <img src="https://s2.loli.net/2022/05/01/bmi67HagVJpDzKd.png" alt="4" style="zoom:45%;" /></p>
+<p>由于训练的样本太少，所以结果不是很令人满意。</p>
 <p><strong>案例二</strong>：蠓虫分类</p>
 <p>题目：依据的资料是触角和翅膀的长度，已经测得了9 支Af 和6 支Apf 的数据如下：<br>Af: (1.24,1.72)，(1.36,1.74)，(1.38,1.64)，(1.38,1.82)，(1.38,1.90)，(1.40,1.70)，<br>(1.48,1.82)，(1.54,1.82)，(1.56,2.08).<br>Apf: (1.14,1.78)，(1.18,1.96)，(1.20,1.86)，(1.26,2.00)，(1.28,2.00)，(1.30,1.96).</p>
 <p>试对触角和翼长分别为(1.24,1.80)，(1.28,1.84)与(1.40,2.04)的3 个标本加以识别。</p>
