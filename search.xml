@@ -33,9 +33,10 @@ class="math inline">\(j\)</span>​个神经元之间的连接权重，<span
 class="math inline">\(b_j^l\)</span>为第<span
 class="math inline">\(l\)</span>层第<span
 class="math inline">\(j\)</span>​个神经元的偏置。</p>
-<p>因此得到：<span class="math inline">\(a=b\)</span></p>
+<p>因此得到：</p>
 <p><span class="math display">\[
-h_j^l=f(net_j^l)  \\ net_j^l=\sum_{j=1}^{s_{l-1}}{w_{ij}^l+b_j^l}
+h_j^l=f(net_j^l)  \\
+net_j^l=\sum_{j=1}^{s_{l-1}}{w_{ij}^l+b_j^l}
 \]</span></p>
 <p>其中<span class="math inline">\(net_j^l\)</span>为第<span
 class="math inline">\(l\)</span>层第<span
