@@ -20,14 +20,35 @@
 </ul>
 <h5 id="which-命令">which 命令</h5>
 <blockquote>
-<p>查看指定命令所在路径 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure> ##### pwd 命令 查看当前所在路径
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure> ##### mkdir 命令 创建目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure></p>
+<p>查看指定命令所在路径 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="pwd-命令">pwd 命令</h5>
+<blockquote>
+<p>查看当前所在路径 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="mkdir-命令">mkdir 命令</h5>
+<blockquote>
+<p>创建目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h5 id="rmdir-命令">rmdir 命令</h5>
 <blockquote>
-<p>删除空目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure> ##### touch 命令 创建空文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure>
-##### rm 命令 删除文件、目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure> ##### mv 命令 移动文件
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure> ##### cp 命令 拷贝文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure></p>
+<p>删除空目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="touch-命令">touch 命令</h5>
+<blockquote>
+<p>创建空文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="rm-命令">rm 命令</h5>
+<blockquote>
+<p>删除文件、目录 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="mv-命令">mv 命令</h5>
+<blockquote>
+<p>移动文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="cp-命令">cp 命令</h5>
+<blockquote>
+<p>拷贝文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure></p>
 </blockquote>
 ]]></content>
       <categories>
