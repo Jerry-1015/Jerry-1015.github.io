@@ -2848,7 +2848,7 @@ mjx-container[display='true'] + br {
   }
 }
 body {
-  background: url("/images/girl.jpg");
+  background: url("/images/girl.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
