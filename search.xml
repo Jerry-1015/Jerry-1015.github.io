@@ -133,10 +133,10 @@
 <p>创建链接</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
-<p><strong>软链接功能相当于Windows下的快捷方式</strong> 1. file.s
-文件的大小为4个字节 4个字节的内容为file的访问路径 <img
-src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p>
-<ol start="2" type="1">
+<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
+<ol type="1">
+<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
+src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
 <li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
 文件名方式创建，所以有差异 <img
 src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
