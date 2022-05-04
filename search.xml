@@ -18,69 +18,6 @@
       </categories>
   </entry>
   <entry>
-    <title>03目录和文件操作1</title>
-    <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
-    <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./home // 当前目录下的home</span><br><span class="line"><span class="built_in">cd</span> .. // 返回上一级</span><br><span class="line"><span class="built_in">cd</span> - // 切回上一个工作目录</span><br><span class="line"><span class="built_in">cd</span> ~ // 进入家目录</span><br></pre></td></tr></table></figure>
-<h5 id="ls-命令">ls 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l // 显示详细信息</span><br><span class="line"><span class="built_in">ls</span> -a // 显示隐藏文件</span><br><span class="line"><span class="built_in">ls</span> -d // 显示目录</span><br><span class="line"><span class="built_in">ls</span> -l <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 目录下的文件的详细信息</span><br><span class="line"><span class="built_in">ls</span> -dl <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 的详细信息</span><br><span class="line"><span class="built_in">ls</span> -r // 递归，向下显示目录</span><br><span class="line"><span class="built_in">ls</span> -R // 递归，向下显示目录, 大小 r 有区别</span><br></pre></td></tr></table></figure>
-<h5 id="linux系统文件类型">linux系统文件类型</h5>
-<ul>
-<li>普通文件：-</li>
-<li>目录文件：d</li>
-<li>字符设备文件：c</li>
-<li>块设备文件：b</li>
-<li>软链接：l</li>
-<li>管道文件：p</li>
-<li>套接字：a</li>
-<li>未知文件</li>
-</ul>
-<h5 id="which-命令">which 命令</h5>
-<blockquote>
-<p>查看指定命令所在路径</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure>
-<h5 id="pwd-命令">pwd 命令</h5>
-<blockquote>
-<p>查看当前所在路径</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-<h5 id="mkdir-命令">mkdir 命令</h5>
-<blockquote>
-<p>创建目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure>
-<h5 id="rmdir-命令">rmdir 命令</h5>
-<blockquote>
-<p>删除空目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure>
-<h5 id="touch-命令">touch 命令</h5>
-<blockquote>
-<p>创建空文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure>
-<h5 id="rm-命令">rm 命令</h5>
-<blockquote>
-<p>删除文件、目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure>
-<h5 id="mv-命令">mv 命令</h5>
-<blockquote>
-<p>移动文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure>
-<h5 id="cp-命令">cp 命令</h5>
-<blockquote>
-<p>拷贝文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-  </entry>
-  <entry>
     <title>04目录和文件操作2</title>
     <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
     <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
@@ -286,6 +223,69 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
 ]]></content>
       <categories>
         <category>机器学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>03目录和文件操作1</title>
+    <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
+    <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./home // 当前目录下的home</span><br><span class="line"><span class="built_in">cd</span> .. // 返回上一级</span><br><span class="line"><span class="built_in">cd</span> - // 切回上一个工作目录</span><br><span class="line"><span class="built_in">cd</span> ~ // 进入家目录</span><br></pre></td></tr></table></figure>
+<h5 id="ls-命令">ls 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l // 显示详细信息</span><br><span class="line"><span class="built_in">ls</span> -a // 显示隐藏文件</span><br><span class="line"><span class="built_in">ls</span> -d // 显示目录</span><br><span class="line"><span class="built_in">ls</span> -l <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 目录下的文件的详细信息</span><br><span class="line"><span class="built_in">ls</span> -dl <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 的详细信息</span><br><span class="line"><span class="built_in">ls</span> -r // 递归，向下显示目录</span><br><span class="line"><span class="built_in">ls</span> -R // 递归，向下显示目录, 大小 r 有区别</span><br></pre></td></tr></table></figure>
+<h5 id="linux系统文件类型">linux系统文件类型</h5>
+<ul>
+<li>普通文件：-</li>
+<li>目录文件：d</li>
+<li>字符设备文件：c</li>
+<li>块设备文件：b</li>
+<li>软链接：l</li>
+<li>管道文件：p</li>
+<li>套接字：a</li>
+<li>未知文件</li>
+</ul>
+<h5 id="which-命令">which 命令</h5>
+<blockquote>
+<p>查看指定命令所在路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure>
+<h5 id="pwd-命令">pwd 命令</h5>
+<blockquote>
+<p>查看当前所在路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+<h5 id="mkdir-命令">mkdir 命令</h5>
+<blockquote>
+<p>创建目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure>
+<h5 id="rmdir-命令">rmdir 命令</h5>
+<blockquote>
+<p>删除空目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure>
+<h5 id="touch-命令">touch 命令</h5>
+<blockquote>
+<p>创建空文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure>
+<h5 id="rm-命令">rm 命令</h5>
+<blockquote>
+<p>删除文件、目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure>
+<h5 id="mv-命令">mv 命令</h5>
+<blockquote>
+<p>移动文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure>
+<h5 id="cp-命令">cp 命令</h5>
+<blockquote>
+<p>拷贝文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
       </categories>
   </entry>
 </search>
