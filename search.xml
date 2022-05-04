@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+  </entry>
+  <entry>
     <title>03目录和文件操作1</title>
     <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
     <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
@@ -58,23 +75,6 @@
 <p>拷贝文件</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
