@@ -258,7 +258,7 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
     <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
     <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
 <blockquote>
-<p>查看文件内容、读终端 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.c // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.c // 文件内容倒着显示</span><br></pre></td></tr></table></figure> <img
+<p>查看文件内容、读终端 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure> <img
 src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
 </blockquote>
 <h5 id="more-less命令">more less命令</h5>
