@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-  </entry>
-  <entry>
     <title>03目录和文件操作1</title>
     <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
     <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
@@ -75,6 +58,23 @@
 <p>拷贝文件</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -173,18 +173,17 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
-<h5 id="chmod-命令">chmod 命令</h5>
-<blockquote>
-<p>chmod [who][+|-|=][mode] 文件名</p>
-<p>who:</p>
+<div class="note "><h5 id="chmod-命令">chmod 命令</h5>
 <ul>
-<li><p>u 表示用户(user), 即文件或目录所有者</p></li>
-<li><p>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</p></li>
-<li><p>o 表示其他(others)用户</p></li>
-<li><p>a 表示所有(all)用户，它是系统默认值</p></li>
+<li>chmod [who][+|-|=][mode] 文件名</li>
+<li>[who]:</li>
+<li>u 表示用户(user), 即文件或目录所有者</li>
+<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
+<li>o 表示其他(others)用户</li>
+<li>a 表示所有(all)用户，它是系统默认值</li>
+<li>数字设定：r: 4; w: 2; x: 1。</li>
 </ul>
-<p>数字设定：r: 4; w: 2; x: 1。</p>
-</blockquote>
+</div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
 <h5 id="chown-命令">chown 命令</h5>
