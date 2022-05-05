@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>04目录和文件操作2</title>
     <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
     <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
@@ -60,6 +40,68 @@
 <blockquote>
 <p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05软链接和硬链接</title>
+    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
+    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
+<blockquote>
+<p>创建链接</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
+<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
+<ol type="1">
+<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
+src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
+<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
+文件名方式创建，所以有差异 <img
+src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
+<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
+<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
+</ol>
+<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>如何实现？</li>
+<li>Inode实现：给每个文件赋一个数</li>
+<li>三个文件有相同的Inode</li>
+<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
+<li>删除的时候怎么办？都删？实际上并不是</li>
+<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
+<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
+<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
+</ol>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -135,48 +177,6 @@
       </tags>
   </entry>
   <entry>
-    <title>05软链接和硬链接</title>
-    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
-    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
-<blockquote>
-<p>创建链接</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
-<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
-<ol type="1">
-<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
-src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
-<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
-文件名方式创建，所以有差异 <img
-src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
-<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
-<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
-</ol>
-<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
-<ol type="1">
-<li>如何实现？</li>
-<li>Inode实现：给每个文件赋一个数</li>
-<li>三个文件有相同的Inode</li>
-<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
-<li>删除的时候怎么办？都删？实际上并不是</li>
-<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
-<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
-<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>06创建修改用户和用户组</title>
     <url>/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</url>
     <content><![CDATA[<h5 id="whoami-命令">whoami 命令</h5>
@@ -186,10 +186,15 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
 <div class="note "><h5 id="chmod-命令">chmod 命令</h5>
-<p><em>chmod [who][+|-|=][mode] 文件名 </em> [who]: * u 表示用户(user),
-即文件或目录所有者 * g 表示同组(group)用户，
-即与文件属组有相同组ID的所有用户 * o 表示其他(others)用户 * a
-表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x: 1。</p>
+<ul>
+<li>chmod [who][+|-|=][mode] 文件名</li>
+<li>[who]:</li>
+<li>u 表示用户(user), 即文件或目录所有者</li>
+<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
+<li>o 表示其他(others)用户</li>
+<li>a 表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x:
+1。</li>
+</ul>
 </div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
