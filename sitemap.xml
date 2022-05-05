@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jerry-1015.github.io/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</loc>
+    <loc>https://jerry-1015.github.io/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jerry-1015.github.io/2022/05/05/07%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%A3%80%E7%B4%A2/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://jerry-1015.github.io/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</loc>
+    <loc>https://jerry-1015.github.io/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
