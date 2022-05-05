@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>04目录和文件操作2</title>
+    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
+    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
+<blockquote>
+<p>查看文件内容、读终端</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
+<h5 id="more-less命令">more less命令</h5>
+<blockquote>
+<p>分屏显示 空格翻页，回车一行，退出用q</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
+<h5 id="head-tail-命令">head tail 命令</h5>
+<blockquote>
+<p>显示默认前10行、显示默认后10行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
+<h5 id="tree-命令">tree 命令</h5>
+<blockquote>
+<p>以树状形式显示文件</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
+<h5 id="wc-命令">wc 命令</h5>
+<blockquote>
+<p>计算文件的byte数，字数，或是列数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
+<h5 id="od-命令">od 命令</h5>
+<blockquote>
+<p>查看当前文件的不同数据的显示</p>
+</blockquote>
+<h5 id="du-df-命令">du df 命令</h5>
+<blockquote>
+<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>03目录和文件操作1</title>
     <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
     <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
@@ -62,68 +130,9 @@
       <categories>
         <category>Linux系统编程</category>
       </categories>
-  </entry>
-  <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>04目录和文件操作2</title>
-    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
-    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
-<blockquote>
-<p>查看文件内容、读终端</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
-<h5 id="more-less命令">more less命令</h5>
-<blockquote>
-<p>分屏显示 空格翻页，回车一行，退出用q</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
-<h5 id="head-tail-命令">head tail 命令</h5>
-<blockquote>
-<p>显示默认前10行、显示默认后10行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
-<h5 id="tree-命令">tree 命令</h5>
-<blockquote>
-<p>以树状形式显示文件</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
-<h5 id="wc-命令">wc 命令</h5>
-<blockquote>
-<p>计算文件的byte数，字数，或是列数</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
-<h5 id="od-命令">od 命令</h5>
-<blockquote>
-<p>查看当前文件的不同数据的显示</p>
-</blockquote>
-<h5 id="du-df-命令">du df 命令</h5>
-<blockquote>
-<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
   </entry>
   <entry>
     <title>05软链接和硬链接</title>
@@ -163,6 +172,9 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       <categories>
         <category>Linux系统编程</category>
       </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
   </entry>
   <entry>
     <title>06创建修改用户和用户组</title>
@@ -174,15 +186,10 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
 <div class="note "><h5 id="chmod-命令">chmod 命令</h5>
-<ul>
-<li>chmod [who][+|-|=][mode] 文件名</li>
-<li>[who]:</li>
-<li>u 表示用户(user), 即文件或目录所有者</li>
-<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
-<li>o 表示其他(others)用户</li>
-<li>a 表示所有(all)用户，它是系统默认值</li>
-<li>数字设定：r: 4; w: 2; x: 1。</li>
-</ul>
+<p><em>chmod [who][+|-|=][mode] 文件名 </em> [who]: * u 表示用户(user),
+即文件或目录所有者 * g 表示同组(group)用户，
+即与文件属组有相同组ID的所有用户 * o 表示其他(others)用户 * a
+表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x: 1。</p>
 </div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
