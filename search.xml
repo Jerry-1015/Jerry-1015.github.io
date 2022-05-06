@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件: 字符设备、块设备</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件：lib.so.6</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>03目录和文件操作1</title>
     <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
     <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
@@ -78,54 +58,6 @@
 <p>拷贝文件</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>04目录和文件操作2</title>
-    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
-    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
-<blockquote>
-<p>查看文件内容、读终端</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
-<h5 id="more-less命令">more less命令</h5>
-<blockquote>
-<p>分屏显示 空格翻页，回车一行，退出用q</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
-<h5 id="head-tail-命令">head tail 命令</h5>
-<blockquote>
-<p>显示默认前10行、显示默认后10行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
-<h5 id="tree-命令">tree 命令</h5>
-<blockquote>
-<p>以树状形式显示文件</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
-<h5 id="wc-命令">wc 命令</h5>
-<blockquote>
-<p>计算文件的byte数，字数，或是列数</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
-<h5 id="od-命令">od 命令</h5>
-<blockquote>
-<p>查看当前文件的不同数据的显示</p>
-</blockquote>
-<h5 id="du-df-命令">du df 命令</h5>
-<blockquote>
-<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
-</blockquote>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -221,6 +153,34 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       </tags>
   </entry>
   <entry>
+    <title>08安装卸载压缩解压软件</title>
+    <url>/2022/05/06/08%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<div class="note primary no-icon"><h5 id="apt-get-命令">apt-get 命令</h5>
+<p>apt-get update // 更新 apt-get install 软件名 apt-get remove 软件名
+// 卸载</p>
+</div>
+<div class="note primary no-icon"><h5 id="deb包安装">deb包安装</h5>
+<p>dpkg -i xxx.deb // 安装deb包 dpkg -r xxx.deb // 卸载deb包</p>
+</div>
+<div class="note primary no-icon"><h5 id="源码安装">源码安装</h5>
+<ol type="1">
+<li>解压缩源代码包</li>
+<li>cd dir</li>
+<li>./configure //检测文件是否缺失，创建Makefile，检测编译环境</li>
+<li>make // 编译源码，生成库和可执行程序</li>
+<li>sudo make install // 把库和可执行程序，安装到系统路径下</li>
+<li>sudo distclean // 删除和卸载软件</li>
+</ol>
+</div>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>07查找与检索</title>
     <url>/2022/05/05/07%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%A3%80%E7%B4%A2/</url>
     <content><![CDATA[<div class="note primary no-icon"><h5 id="find-命令">find 命令</h5>
@@ -236,13 +196,17 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <li>-exec           将 find 搜索的执行结果集执行某一指定命令</li>
 <li>-ok               以交互式的方式将 find
 搜索的执行结果集执行某一指定命令</li>
+<li>xargs           将 find
+搜索的执行结果集执行某一指定命令,当结果集数量较大时，可以分片映射。</li>
+<li>-print0                find /usr/ -name '<em>tmp</em>' | xargs -0 ls
+-ld</li>
 </ul>
 </div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find ./ -<span class="built_in">type</span> <span class="string">&#x27;l&#x27;</span></span><br><span class="line">find ./ -name <span class="string">&#x27;*.cc&#x27;</span></span><br><span class="line">find ./ -maxdepth 1 -name <span class="string">&#x27;*.cc&#x27;</span>  // 参数有顺序要求</span><br><span class="line">find ./ -size +20M -size -50M</span><br><span class="line">find ./ -ctime 1</span><br><span class="line">find /usr/ -name <span class="string">&quot;*tmp*&quot;</span> -<span class="built_in">exec</span> <span class="built_in">ls</span> -l &#123;&#125; \;</span><br><span class="line">find /usr/ -name <span class="string">&quot;*tmp*&quot;</span> -ok <span class="built_in">ls</span> -l &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find ./ -<span class="built_in">type</span> <span class="string">&#x27;l&#x27;</span></span><br><span class="line">find ./ -name <span class="string">&#x27;*.cc&#x27;</span></span><br><span class="line">find ./ -maxdepth 1 -name <span class="string">&#x27;*.cc&#x27;</span>  // 参数有顺序要求</span><br><span class="line">find ./ -size +20m -size -50m</span><br><span class="line">find ./ -ctime 1</span><br><span class="line">find /usr/ -name <span class="string">&quot;*tmp*&quot;</span> -<span class="built_in">exec</span> <span class="built_in">ls</span> -l &#123;&#125; \;</span><br><span class="line">find /usr/ -name <span class="string">&quot;*tmp*&quot;</span> -ok <span class="built_in">ls</span> -l &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 <div class="note primary no-icon"><h5 id="grep-命令">grep 命令</h5>
 <p><code>找文件内容</code></p>
 </div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -r <span class="string">&#x27;include&#x27;</span> ./ -n</span><br><span class="line">ps aux | grep kernel // 若结果只有一条，那就是只有grep自身</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep -r <span class="string">&#x27;include&#x27;</span> ./ -n</span><br><span class="line">ps aux | grep <span class="string">&#x27;cupad&#x27;</span> // 若结果只有一条，那就是只有grep自身, 检索进程结果集</span><br></pre></td></tr></table></figure>
 <div class="note primary no-icon"><h5 id="ps-命令">ps 命令</h5>
 <p><code>查看进程</code></p>
 </div>
@@ -256,8 +220,92 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       </tags>
   </entry>
   <entry>
+    <title>哈夫曼编码原理及代码实现</title>
+    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
+<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
+<p>      
+哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件: 字符设备、块设备</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件：lib.so.6</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>04目录和文件操作2</title>
+    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
+    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
+<blockquote>
+<p>查看文件内容、读终端</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
+<h5 id="more-less命令">more less命令</h5>
+<blockquote>
+<p>分屏显示 空格翻页，回车一行，退出用q</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
+<h5 id="head-tail-命令">head tail 命令</h5>
+<blockquote>
+<p>显示默认前10行、显示默认后10行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
+<h5 id="tree-命令">tree 命令</h5>
+<blockquote>
+<p>以树状形式显示文件</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
+<h5 id="wc-命令">wc 命令</h5>
+<blockquote>
+<p>计算文件的byte数，字数，或是列数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
+<h5 id="od-命令">od 命令</h5>
+<blockquote>
+<p>查看当前文件的不同数据的显示</p>
+</blockquote>
+<h5 id="du-df-命令">du df 命令</h5>
+<blockquote>
+<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>BP神经网络</title>
-    <url>/2022/05/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</url>
+    <url>/2022/05/01/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="bp神经网络算法">BP神经网络算法</h1>
 <h4 id="算法原理">1. 算法原理</h4>
 <h5 id="概述">1.1 概述</h5>
