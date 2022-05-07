@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>02类Unix系统目录</title>
+    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
+    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
+<p>bin: 存放二进制可执行文件</p>
+<p>boot: 存放开机启动程序，相当于Windows的服务</p>
+<p>dev: 存放设备文件: 字符设备、块设备</p>
+<p>home: 存放用户</p>
+<p>etc: 用户信息和系统配置文件</p>
+<p>lib: 库文件：lib.so.6</p>
+<p>root: 管理员宿主目录</p>
+<p>usr: 用户资源管理目录</p>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>03目录和文件操作1</title>
     <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
     <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
@@ -67,26 +87,6 @@
       </tags>
   </entry>
   <entry>
-    <title>02类Unix系统目录</title>
-    <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
-    <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
-<p>bin: 存放二进制可执行文件</p>
-<p>boot: 存放开机启动程序，相当于Windows的服务</p>
-<p>dev: 存放设备文件: 字符设备、块设备</p>
-<p>home: 存放用户</p>
-<p>etc: 用户信息和系统配置文件</p>
-<p>lib: 库文件：lib.so.6</p>
-<p>root: 管理员宿主目录</p>
-<p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>04目录和文件操作2</title>
     <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
     <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
@@ -126,48 +126,6 @@
 <blockquote>
 <p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>05软链接和硬链接</title>
-    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
-    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
-<blockquote>
-<p>创建链接</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
-<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
-<ol type="1">
-<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
-src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
-<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
-文件名方式创建，所以有差异 <img
-src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
-<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
-<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
-</ol>
-<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
-<ol type="1">
-<li>如何实现？</li>
-<li>Inode实现：给每个文件赋一个数</li>
-<li>三个文件有相同的Inode</li>
-<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
-<li>删除的时候怎么办？都删？实际上并不是</li>
-<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
-<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
-<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
-</ol>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -221,26 +179,39 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       </tags>
   </entry>
   <entry>
-    <title>08安装卸载、压缩解压软件</title>
-    <url>/2022/05/06/08%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<div class="note primary no-icon"><h5 id="apt-get-命令">apt-get 命令</h5>
-<p><code>安装、卸载</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update // 更新</span><br><span class="line">apt-get install 软件名</span><br><span class="line">apt-get remove 软件名 // 卸载</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="deb包安装">deb包安装</h5>
-<p><code>安装、卸载</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i xxx.deb // 安装deb包</span><br><span class="line">dpkg -r xxx.deb // 卸载deb包</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="源码安装">源码安装</h5>
+    <title>05软链接和硬链接</title>
+    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
+    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
+<blockquote>
+<p>创建链接</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
+<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
 <ol type="1">
-<li>解压缩源代码包</li>
-<li>cd dir</li>
-<li>./configure //检测文件是否缺失，创建Makefile，检测编译环境</li>
-<li>make // 编译源码，生成库和可执行程序</li>
-<li>sudo make install // 把库和可执行程序，安装到系统路径下</li>
-<li>sudo distclean // 删除和卸载软件</li>
+<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
+src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
+<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
+文件名方式创建，所以有差异 <img
+src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
+<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
 </ol>
-</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
+<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
+</ol>
+<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>如何实现？</li>
+<li>Inode实现：给每个文件赋一个数</li>
+<li>三个文件有相同的Inode</li>
+<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
+<li>删除的时候怎么办？都删？实际上并不是</li>
+<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
+<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
+<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
+</ol>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -280,6 +251,35 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <p><code>查看进程</code></p>
 </div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps aux</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>08安装卸载、压缩解压软件</title>
+    <url>/2022/05/06/08%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<div class="note primary no-icon"><h5 id="apt-get-命令">apt-get 命令</h5>
+<p><code>安装、卸载</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update // 更新</span><br><span class="line">apt-get install 软件名</span><br><span class="line">apt-get remove 软件名 // 卸载</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="deb包安装">deb包安装</h5>
+<p><code>安装、卸载</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i xxx.deb // 安装deb包</span><br><span class="line">dpkg -r xxx.deb // 卸载deb包</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="源码安装">源码安装</h5>
+<ol type="1">
+<li>解压缩源代码包</li>
+<li>cd dir</li>
+<li>./configure //检测文件是否缺失，创建Makefile，检测编译环境</li>
+<li>make // 编译源码，生成库和可执行程序</li>
+<li>sudo make install // 把库和可执行程序，安装到系统路径下</li>
+<li>sudo distclean // 删除和卸载软件</li>
+</ol>
+</div>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -497,7 +497,7 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
 2. 二进制文件 - 文件以文本的二进制形式存储在计算机中，用户一般不能直接读懂他们</code></pre>
 <p>操作文件的三大类：</p>
 <pre><code>1. ofstream: 写操作
-2. ifstream: ducaozuo
+2. ifstream: 读操作
 3. fstream: 读写操作</code></pre>
 <h2 id="文本文件">1. 文本文件</h2>
 <h3 id="写文件">1.1 写文件</h3>
