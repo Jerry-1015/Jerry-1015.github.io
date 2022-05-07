@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>04目录和文件操作2</title>
+    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
+    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
+<blockquote>
+<p>查看文件内容、读终端</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
+<h5 id="more-less命令">more less命令</h5>
+<blockquote>
+<p>分屏显示 空格翻页，回车一行，退出用q</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
+<h5 id="head-tail-命令">head tail 命令</h5>
+<blockquote>
+<p>显示默认前10行、显示默认后10行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
+<h5 id="tree-命令">tree 命令</h5>
+<blockquote>
+<p>以树状形式显示文件</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
+<h5 id="wc-命令">wc 命令</h5>
+<blockquote>
+<p>计算文件的byte数，字数，或是列数</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
+<h5 id="od-命令">od 命令</h5>
+<blockquote>
+<p>查看当前文件的不同数据的显示</p>
+</blockquote>
+<h5 id="du-df-命令">du df 命令</h5>
+<blockquote>
+<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>02类Unix系统目录</title>
     <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
@@ -78,98 +126,6 @@
 <p>拷贝文件</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>04目录和文件操作2</title>
-    <url>/2022/05/03/04%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C2/</url>
-    <content><![CDATA[<h5 id="cat-命令">cat 命令</h5>
-<blockquote>
-<p>查看文件内容、读终端</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> hello.cc // 查看文件内容</span><br><span class="line"><span class="built_in">cat</span> // 回显终端</span><br><span class="line"><span class="built_in">tac</span> hello.cc // 文件内容倒着显示</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/03/hfjvTVn5ZMCkqaJ.png" /></p>
-<h5 id="more-less命令">more less命令</h5>
-<blockquote>
-<p>分屏显示 空格翻页，回车一行，退出用q</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">more stdio.h</span><br><span class="line">less stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/G7SFDYOXKRAdWnj.png" /></p>
-<h5 id="head-tail-命令">head tail 命令</h5>
-<blockquote>
-<p>显示默认前10行、显示默认后10行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">head</span> stdio.h</span><br><span class="line"><span class="built_in">head</span> -5 stdio.h</span><br><span class="line"><span class="built_in">tail</span> -15 stdio.h</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/IeGijw3v4OV5yKa.png" /></p>
-<h5 id="tree-命令">tree 命令</h5>
-<blockquote>
-<p>以树状形式显示文件</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2022/05/04/nUZvuWgPehkCTwp.png" /></p>
-<h5 id="wc-命令">wc 命令</h5>
-<blockquote>
-<p>计算文件的byte数，字数，或是列数</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">wc</span> -c hello.cc // 只显示byte数</span><br><span class="line"><span class="built_in">wc</span> -l hello.cc // 只显示列数</span><br><span class="line"><span class="built_in">wc</span> -w hello.cc // 只显示字数</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/Ih1mjx6MvWRUw8N.png" /></p>
-<h5 id="od-命令">od 命令</h5>
-<blockquote>
-<p>查看当前文件的不同数据的显示</p>
-</blockquote>
-<h5 id="du-df-命令">du df 命令</h5>
-<blockquote>
-<p>du： 显示某个目录大小； df：查看磁盘剩余空间</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>06创建修改用户和用户组</title>
-    <url>/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</url>
-    <content><![CDATA[<h5 id="whoami-命令">whoami 命令</h5>
-<blockquote>
-<p>查看当前用户</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
-<div class="note "><h5 id="chmod-命令">chmod 命令</h5>
-<ul>
-<li>chmod [who][+|-|=][mode] 文件名</li>
-<li>[who]:</li>
-<li>u 表示用户(user), 即文件或目录所有者</li>
-<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
-<li>o 表示其他(others)用户</li>
-<li>a 表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x:
-1。</li>
-</ul>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
-<h5 id="chown-命令">chown 命令</h5>
-<blockquote>
-<p>修改文件或目录的所有者或所属组</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> wangwu hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/xgOX1HhsraEK3CD.png" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chgrp</span> g88 hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/DheubWI6CSR975l.png" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> nobody:nogroup hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/05/Yf45k8iA6WlnyP3.png" /></p>
-<h5 id="adduser-addgroup-命令">adduser addgroup 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo adduser wangwu</span><br><span class="line">sudo addgroup g88</span><br></pre></td></tr></table></figure>
-<h5 id="deluser-delgroup-命令">deluser delgroup 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deluser wangwu</span><br><span class="line">delgroup g88</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -280,6 +236,50 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <li>sudo distclean // 删除和卸载软件</li>
 </ol>
 </div>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>06创建修改用户和用户组</title>
+    <url>/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</url>
+    <content><![CDATA[<h5 id="whoami-命令">whoami 命令</h5>
+<blockquote>
+<p>查看当前用户</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
+<div class="note "><h5 id="chmod-命令">chmod 命令</h5>
+<ul>
+<li>chmod [who][+|-|=][mode] 文件名</li>
+<li>[who]:</li>
+<li>u 表示用户(user), 即文件或目录所有者</li>
+<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
+<li>o 表示其他(others)用户</li>
+<li>a 表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x:
+1。</li>
+</ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
+<h5 id="chown-命令">chown 命令</h5>
+<blockquote>
+<p>修改文件或目录的所有者或所属组</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> wangwu hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/xgOX1HhsraEK3CD.png" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chgrp</span> g88 hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/DheubWI6CSR975l.png" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> nobody:nogroup hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/05/Yf45k8iA6WlnyP3.png" /></p>
+<h5 id="adduser-addgroup-命令">adduser addgroup 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo adduser wangwu</span><br><span class="line">sudo addgroup g88</span><br></pre></td></tr></table></figure>
+<h5 id="deluser-delgroup-命令">deluser delgroup 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deluser wangwu</span><br><span class="line">delgroup g88</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -470,22 +470,6 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
       </categories>
   </entry>
   <entry>
-    <title>哈夫曼编码原理及代码实现</title>
-    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
-<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
-<p>      
-哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++文件操作</title>
     <url>/2022/05/07/C++%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="文件操作">文件操作</h1>
@@ -569,7 +553,7 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
 是读写的字节数</p>
 </div>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span> _name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> _age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ofstream ofs;</span><br><span class="line">    ofs.<span class="built_in">open</span>(<span class="string">&quot;person.txt&quot;</span>, ios::out | ios::binary);</span><br><span class="line">    Person p = &#123;<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>&#125;;</span><br><span class="line">    ofs.<span class="built_in">write</span>((<span class="type">const</span> <span class="type">char</span> *)&amp;p, <span class="built_in">sizeof</span>(Person));</span><br><span class="line"></span><br><span class="line">    ofs.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="读文件-1">2.2 读文件</h4>
+<h3 id="读文件-1">2.2 读文件</h3>
 <div class="note primary no-icon"><p>二进制方式读文件主要利用流对象调用成员函数 <code>read</code></p>
 <p>函数原型： `istream&amp; read(const char* buffer, int len);</p>
 <p>参数解释：字符指针buffer指向内存中一段存储空间， len
@@ -579,6 +563,22 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
 ]]></content>
       <categories>
         <category>C++笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈夫曼编码原理及代码实现</title>
+    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
+<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
+<p>      
+哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
       </categories>
       <tags>
         <tag>C++</tag>
