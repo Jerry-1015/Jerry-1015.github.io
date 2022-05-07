@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>05软链接和硬链接</title>
-    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
-    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
-<blockquote>
-<p>创建链接</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
-<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
-<ol type="1">
-<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
-src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
-<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
-文件名方式创建，所以有差异 <img
-src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
-<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
-<ol start="4" type="1">
-<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
-<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
-</ol>
-<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
-<ol type="1">
-<li>如何实现？</li>
-<li>Inode实现：给每个文件赋一个数</li>
-<li>三个文件有相同的Inode</li>
-<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
-<li>删除的时候怎么办？都删？实际上并不是</li>
-<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
-<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
-<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>02类Unix系统目录</title>
     <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
@@ -120,6 +78,48 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <p>拷贝文件</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05软链接和硬链接</title>
+    <url>/2022/05/04/05%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/</url>
+    <content><![CDATA[<h5 id="ln-命令">ln 命令</h5>
+<blockquote>
+<p>创建链接</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s file file.s</span><br><span class="line"><span class="built_in">ln</span> -s ./file file.soft</span><br></pre></td></tr></table></figure>
+<p><strong>软链接功能相当于Windows下的快捷方式</strong></p>
+<ol type="1">
+<li><p>file.s 文件的大小为4个字节 4个字节的内容为file的访问路径 <img
+src="https://s2.loli.net/2022/05/04/E7AcoanMZeRvLj8.png" /></p></li>
+<li><p>file.soft 文件的大小为6个字节 因为利用 <code>./</code> +
+文件名方式创建，所以有差异 <img
+src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
+<li><p>利用相对路径创建的软链接，移动到别的目录下不能正确执行，若想顺利执行，需要使用绝对路径</p></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /home/jerry/file file.s2</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>为保证软链接可以任意搬移，创建时务必使用绝对路径</li>
+<li>软链接的权限全开放，代表软链接本身的权限，不是文件的权限</li>
+</ol>
+<p><strong>硬链接对任意一个文件进行修改，其他文件都会发生变化</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> file file.h</span><br><span class="line"><span class="built_in">ln</span> file file.hard</span><br></pre></td></tr></table></figure>
+<ol type="1">
+<li>如何实现？</li>
+<li>Inode实现：给每个文件赋一个数</li>
+<li>三个文件有相同的Inode</li>
+<li>当操作任意一个文件时，都是操作同一个Inode的文件</li>
+<li>删除的时候怎么办？都删？实际上并不是</li>
+<li>而是并没有真正删除，只是把硬链接计数减一，当硬链接计数为0时，才真正删除文件</li>
+<li>操作系统给每一个文件赋予唯一的Inode，当有相同Inode文件存在时，彼此同步。</li>
+<li>删除时，只将硬链接计数减一， 减为0时，Inode释放</li>
+</ol>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -289,11 +289,11 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <li>c: create</li>
 <li>v: 显示压缩过程</li>
 <li>f: file</li>
-<li>j：用bzip压缩</li>
+<li>j：用bzip2压缩</li>
 <li>x: 解压</li>
 </ul>
 </div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zcvf 要生成的压缩包名 压缩材料 </span><br><span class="line">tar -zxvf 压缩包名 </span><br><span class="line"></span><br><span class="line">tar zcvf test.tar.gz file1 dir2 使用gzip方式压缩</span><br><span class="line">tar jcvf test.tar.gz file1 dir2 使用bzip方式压缩</span><br><span class="line"></span><br><span class="line">tar zxvf test.tar.gz 使用gzip方式解压</span><br><span class="line">tar jxvf test.tar.gz 使用bzip方式解压</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zcvf 要生成的压缩包名 压缩材料 </span><br><span class="line">tar -zxvf 压缩包名 </span><br><span class="line"></span><br><span class="line">tar zcvf test.tar.gz file1 dir2 使用gzip方式压缩</span><br><span class="line">tar jcvf test.tar.gz file1 dir2 使用bzip2方式压缩</span><br><span class="line"></span><br><span class="line">tar zxvf test.tar.gz 使用gzip方式解压</span><br><span class="line">tar jxvf test.tar.gz 使用bzip方式解压</span><br></pre></td></tr></table></figure>
 <div class="note primary no-icon"><h5 id="rar-unrar-命令">rar unrar 命令</h5>
 <p><code>压缩解压</code></p>
 </div>
@@ -492,6 +492,22 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
       </categories>
   </entry>
   <entry>
+    <title>哈夫曼编码原理及代码实现</title>
+    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
+<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
+<p>      
+哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++文件操作</title>
     <url>/2022/05/07/C++%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<h1 id="文件操作">文件操作</h1>
@@ -587,22 +603,6 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
 ]]></content>
       <categories>
         <category>C++笔记</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>哈夫曼编码原理及代码实现</title>
-    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
-<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
-<p>      
-哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
       </categories>
       <tags>
         <tag>C++</tag>
