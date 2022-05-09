@@ -23,25 +23,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerry-1015.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="人生如逆旅，我亦是行人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="岁月飞扬の博客">
-<meta property="og:url" content="https://jerry-1015.github.io/archives/2022/05/page/2/index.html">
+    <meta name="description" content="Linux系统编程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10gcc编译步骤">
+<meta property="og:url" content="https://jerry-1015.github.io/2022/05/09/10gcc%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4/index.html">
 <meta property="og:site_name" content="岁月飞扬の博客">
-<meta property="og:description" content="人生如逆旅，我亦是行人">
+<meta property="og:description" content="Linux系统编程笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-09T15:25:52.321Z">
+<meta property="article:modified_time" content="2022-05-09T15:49:12.590Z">
 <meta property="article:author" content="Jerry">
+<meta property="article:tag" content="gcc编译">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jerry-1015.github.io/archives/2022/05/page/2/">
+<link rel="canonical" href="https://jerry-1015.github.io/2022/05/09/10gcc%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/05/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://jerry-1015.github.io/2022/05/09/10gcc%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4/","path":"2022/05/09/10gcc编译步骤/","title":"10gcc编译步骤"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 岁月飞扬の博客</title>
+<title>10gcc编译步骤 | 岁月飞扬の博客</title>
   
 
 
@@ -71,7 +74,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">岁月飞扬の博客</h1>
+      <p class="site-title">岁月飞扬の博客</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">记录学习和感悟</p>
@@ -131,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#gcc%E7%BC%96%E8%AF%914%E6%AD%A5%E9%AA%A4"><span class="nav-text">gcc编译4步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gcc-%E5%8F%82%E6%95%B0"><span class="nav-text">gcc 参数</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,72 +222,158 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 12 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://jerry-1015.github.io/2022/05/09/10gcc%E7%BC%96%E8%AF%91%E6%AD%A5%E9%AA%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/twig.png">
+      <meta itemprop="name" content="Jerry">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岁月飞扬の博客">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="10gcc编译步骤 | 岁月飞扬の博客">
+      <meta itemprop="description" content="Linux系统编程笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          10gcc编译步骤
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2022-05-09 23:25:52 / 修改时间：23:49:12" itemprop="dateCreated datePublished" datetime="2022-05-09T23:25:52+08:00">2022-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">Linux系统编程</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>322</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Linux系统编程笔记</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="note primary no-icon"><h5 id="gcc编译4步骤">gcc编译4步骤</h5>
+<ol type="1">
+<li>预处理：<code>gcc -E</code> hello.c -&gt; hello.i
+<ol type="1">
+<li>展开宏，头文件</li>
+<li>替换条件编译</li>
+<li>删除注释、空行、空白</li>
+</ol></li>
+<li>编译: <code>gcc -S</code> hello.i -&gt; hello.s
+<ol type="1">
+<li>检查语法规范</li>
+<li>消耗时间、系统资源最多</li>
+</ol></li>
+<li>汇编: <code>gcc -c</code> hello.s -&gt; hello.o
+<ol type="1">
+<li>将汇编指令翻译成机器指令</li>
+</ol></li>
+<li>链接
+<ol type="1">
+<li>数据段合并</li>
+<li>地址回填</li>
+</ol></li>
+</ol>
+</div>
+<div class="note primary no-icon"><h5 id="gcc-参数">gcc 参数</h5>
+<ul>
+<li>-I: 指定头文件路径</li>
+<li>-c: 预处理、编译、汇编。得到二进制文件</li>
+<li>-g: 编译时添加调试语句。主要支持gdb调试</li>
+<li>On: n=0~3 编译优化，n越大优化得越多</li>
+<li>Wall: 提示所有警告信息</li>
+<li>D: 向程序中"动态"注册宏</li>
+</ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gcc -I ./inc hello.c -o hello</span><br><span class="line">gcc hello.c -o hello1</span><br><span class="line">gcc hello.c -o hello2 -g</span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-02T19:05:10+08:00"
-              content="2022-05-02">
-          05-02
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/" itemprop="url">
-            <span itemprop="name">02类Unix系统目录</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gcc%E7%BC%96%E8%AF%91/" rel="tag"><i class="fa fa-tag"></i> gcc编译</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/05/09/09%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4/" rel="prev" title="09其他命令">
+                  <i class="fa fa-chevron-left"></i> 09其他命令
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-01T19:56:44+08:00"
-              content="2022-05-01">
-          05-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/01/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%97%E6%B3%95/" itemprop="url">
-            <span itemprop="name">BP神经网络</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2022/05/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2022/05/">1</a><span class="page-number current">2</span>
-  </nav>
+
+
+
 
 </div>
   </main>
