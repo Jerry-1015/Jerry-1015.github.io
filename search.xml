@@ -1,72 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>03目录和文件操作1</title>
-    <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
-    <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./home // 当前目录下的home</span><br><span class="line"><span class="built_in">cd</span> .. // 返回上一级</span><br><span class="line"><span class="built_in">cd</span> - // 切回上一个工作目录</span><br><span class="line"><span class="built_in">cd</span> ~ // 进入家目录</span><br></pre></td></tr></table></figure>
-<h5 id="ls-命令">ls 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l // 显示详细信息</span><br><span class="line"><span class="built_in">ls</span> -a // 显示隐藏文件</span><br><span class="line"><span class="built_in">ls</span> -d // 显示目录</span><br><span class="line"><span class="built_in">ls</span> -l <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 目录下的文件的详细信息</span><br><span class="line"><span class="built_in">ls</span> -dl <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 的详细信息</span><br><span class="line"><span class="built_in">ls</span> -r // 递归，向下显示目录</span><br><span class="line"><span class="built_in">ls</span> -R // 递归，向下显示目录, 大小 r 有区别</span><br></pre></td></tr></table></figure>
-<h5 id="linux系统文件类型">linux系统文件类型</h5>
-<ul>
-<li>普通文件：-</li>
-<li>目录文件：d</li>
-<li>字符设备文件：c</li>
-<li>块设备文件：b</li>
-<li>软链接：l</li>
-<li>管道文件：p</li>
-<li>套接字：s</li>
-<li>未知文件</li>
-</ul>
-<h5 id="which-命令">which 命令</h5>
-<blockquote>
-<p>查看指定命令所在路径</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure>
-<h5 id="pwd-命令">pwd 命令</h5>
-<blockquote>
-<p>查看当前所在路径</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-<h5 id="mkdir-命令">mkdir 命令</h5>
-<blockquote>
-<p>创建目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure>
-<h5 id="rmdir-命令">rmdir 命令</h5>
-<blockquote>
-<p>删除空目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure>
-<h5 id="touch-命令">touch 命令</h5>
-<blockquote>
-<p>创建空文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure>
-<h5 id="rm-命令">rm 命令</h5>
-<blockquote>
-<p>删除文件、目录</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure>
-<h5 id="mv-命令">mv 命令</h5>
-<blockquote>
-<p>移动文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure>
-<h5 id="cp-命令">cp 命令</h5>
-<blockquote>
-<p>拷贝文件</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>02类Unix系统目录</title>
     <url>/2022/05/02/02%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/</url>
     <content><![CDATA[<p>Linux系统中 "所见皆文件"</p>
@@ -78,100 +12,6 @@
 <p>lib: 库文件：lib.so.6</p>
 <p>root: 管理员宿主目录</p>
 <p>usr: 用户资源管理目录</p>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>06创建修改用户和用户组</title>
-    <url>/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</url>
-    <content><![CDATA[<h5 id="whoami-命令">whoami 命令</h5>
-<blockquote>
-<p>查看当前用户</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
-<div class="note "><h5 id="chmod-命令">chmod 命令</h5>
-<ul>
-<li>chmod [who][+|-|=][mode] 文件名</li>
-<li>[who]:</li>
-<li>u 表示用户(user), 即文件或目录所有者</li>
-<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
-<li>o 表示其他(others)用户</li>
-<li>a 表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x:
-1。</li>
-</ul>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
-<h5 id="chown-命令">chown 命令</h5>
-<blockquote>
-<p>修改文件或目录的所有者或所属组</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> wangwu hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/xgOX1HhsraEK3CD.png" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chgrp</span> g88 hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/04/DheubWI6CSR975l.png" /></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> nobody:nogroup hello.cc</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/05/05/Yf45k8iA6WlnyP3.png" /></p>
-<h5 id="adduser-addgroup-命令">adduser addgroup 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo adduser wangwu</span><br><span class="line">sudo addgroup g88</span><br></pre></td></tr></table></figure>
-<h5 id="deluser-delgroup-命令">deluser delgroup 命令</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deluser wangwu</span><br><span class="line">delgroup g88</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>08安装卸载、压缩解压软件</title>
-    <url>/2022/05/06/08%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E3%80%81%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<div class="note primary no-icon"><h5 id="apt-get-命令">apt-get 命令</h5>
-<p><code>安装、卸载</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update // 更新</span><br><span class="line">pt-get install 软件名</span><br><span class="line">apt-get remove 软件名 // 卸载</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="deb包安装">deb包安装</h5>
-<p><code>安装、卸载</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i xxx.deb // 安装deb包</span><br><span class="line">dpkg -r xxx.deb // 卸载deb包</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="源码安装">源码安装</h5>
-<ol type="1">
-<li>解压缩源代码包</li>
-<li>cd dir</li>
-<li>./configure //检测文件是否缺失，创建Makefile，检测编译环境</li>
-<li>make // 编译源码，生成库和可执行程序</li>
-<li>sudo make install // 把库和可执行程序，安装到系统路径下</li>
-<li>sudo distclean // 删除和卸载软件</li>
-</ol>
-</div>
-<div class="note primary no-icon"><h5 id="tar-命令">tar 命令</h5>
-<p><code>tar打包</code> <br> <code>gzip压缩</code>： 只能压缩一个文件
-<br> <code>bzip压缩</code>: 只能压缩一个文件</p>
-<ul>
-<li>z：用gzip压缩</li>
-<li>c: create</li>
-<li>v: 显示压缩过程</li>
-<li>f: file</li>
-<li>j：用bzip2压缩</li>
-<li>x: 解压</li>
-</ul>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zcvf 要生成的压缩包名 压缩材料 </span><br><span class="line">tar -zxvf 压缩包名 </span><br><span class="line"></span><br><span class="line">tar zcvf test.tar.gz file1 dir2 使用gzip方式压缩</span><br><span class="line">tar jcvf test.tar.gz file1 dir2 使用bzip2方式压缩</span><br><span class="line"></span><br><span class="line">tar zxvf test.tar.gz 使用gzip方式解压</span><br><span class="line">tar jxvf test.tar.gz 使用bzip方式解压</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="rar-unrar-命令">rar unrar 命令</h5>
-<p><code>压缩解压</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rar a -r test.rar hello.cc stdio.h</span><br><span class="line">unrar x test.rar</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="zip-unzip-命令">zip unzip 命令</h5>
-<p><code>压缩解压</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zip -r test.zip hello.cc stdio.h</span><br><span class="line">unzip test.zip</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -271,6 +111,72 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       </tags>
   </entry>
   <entry>
+    <title>03目录和文件操作1</title>
+    <url>/2022/05/02/03%E7%9B%AE%E5%BD%95%E5%92%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C1/</url>
+    <content><![CDATA[<h5 id="相对路径和绝对路径">相对路径和绝对路径</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./home // 当前目录下的home</span><br><span class="line"><span class="built_in">cd</span> .. // 返回上一级</span><br><span class="line"><span class="built_in">cd</span> - // 切回上一个工作目录</span><br><span class="line"><span class="built_in">cd</span> ~ // 进入家目录</span><br></pre></td></tr></table></figure>
+<h5 id="ls-命令">ls 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l // 显示详细信息</span><br><span class="line"><span class="built_in">ls</span> -a // 显示隐藏文件</span><br><span class="line"><span class="built_in">ls</span> -d // 显示目录</span><br><span class="line"><span class="built_in">ls</span> -l <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 目录下的文件的详细信息</span><br><span class="line"><span class="built_in">ls</span> -dl <span class="built_in">dir</span> // 显示 <span class="built_in">dir</span> 的详细信息</span><br><span class="line"><span class="built_in">ls</span> -r // 递归，向下显示目录</span><br><span class="line"><span class="built_in">ls</span> -R // 递归，向下显示目录, 大小 r 有区别</span><br></pre></td></tr></table></figure>
+<h5 id="linux系统文件类型">linux系统文件类型</h5>
+<ul>
+<li>普通文件：-</li>
+<li>目录文件：d</li>
+<li>字符设备文件：c</li>
+<li>块设备文件：b</li>
+<li>软链接：l</li>
+<li>管道文件：p</li>
+<li>套接字：s</li>
+<li>未知文件</li>
+</ul>
+<h5 id="which-命令">which 命令</h5>
+<blockquote>
+<p>查看指定命令所在路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">which</span> <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">which</span> data</span><br></pre></td></tr></table></figure>
+<h5 id="pwd-命令">pwd 命令</h5>
+<blockquote>
+<p>查看当前所在路径</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+<h5 id="mkdir-命令">mkdir 命令</h5>
+<blockquote>
+<p>创建目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> dir1 dir2 // 一次创建多个目录</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">dir</span>/dir1/dir2 // 连同父目录一同创建</span><br></pre></td></tr></table></figure>
+<h5 id="rmdir-命令">rmdir 命令</h5>
+<blockquote>
+<p>删除空目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rmdir</span> dir1</span><br><span class="line"><span class="built_in">rmdir</span> -p a/b // 连同空的父目录一起删除</span><br></pre></td></tr></table></figure>
+<h5 id="touch-命令">touch 命令</h5>
+<blockquote>
+<p>创建空文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> hello.c</span><br></pre></td></tr></table></figure>
+<h5 id="rm-命令">rm 命令</h5>
+<blockquote>
+<p>删除文件、目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> file // 删除文件</span><br><span class="line"><span class="built_in">rm</span> <span class="built_in">dir</span> -rf // 删除目录 f：强制删除</span><br></pre></td></tr></table></figure>
+<h5 id="mv-命令">mv 命令</h5>
+<blockquote>
+<p>移动文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mv</span> <span class="built_in">source</span> destination </span><br></pre></td></tr></table></figure>
+<h5 id="cp-命令">cp 命令</h5>
+<blockquote>
+<p>拷贝文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> hello.c <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> hello.c hello.cpp // 用hello.c 创建 hello.cpp</span><br><span class="line"><span class="built_in">cp</span> hello.* <span class="built_in">dir</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> .. // 显示 路过目录<span class="string">&quot;dir&quot;</span></span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -a <span class="built_in">dir</span> .. // 全部拷贝 包括文件属性 时间、权限等</span><br><span class="line"><span class="built_in">cp</span> <span class="built_in">dir</span> -r <span class="built_in">dir</span> .. // </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>07查找与检索</title>
     <url>/2022/05/05/07%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%A3%80%E7%B4%A2/</url>
     <content><![CDATA[<div class="note primary no-icon"><h5 id="find-命令">find 命令</h5>
@@ -347,179 +253,12 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 </ul>
 </div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gcc -I ./inc hello.c -o hello</span><br><span class="line">gcc hello.c -o hello1</span><br><span class="line">gcc hello.c -o hello2 -g</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="隐式声明">隐式声明</h5>
-<p>当编译器在编译时，碰到函数调用之前，没有发现函数定义及函数声明，编译器会帮我们进行隐式声明。</br>
-但编译器的隐式声明的返回值是 int 类型，因此若你的声明的返回值不是 int
-类型，则会报错。</br> 解决方法： - 在cpp文件中添加函数原型 -
-静态库编写者写头文件</p>
-</div>
-<div class="note primary no-icon"><h5 id="头文件守卫">头文件守卫</h5>
-<p><code>防止头文件被重复包含</code><br />
-#ifndef <em>HEAD_H</em> #define <em>HEAD_H</em> ...... #endif</p>
-</div>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// mymath.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _MYMATH_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _MYMATH_H_</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sub</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">div1</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> inc</span><br><span class="line"><span class="built_in">mkdir</span> lib</span><br><span class="line"><span class="built_in">mv</span> *.h inc/</span><br><span class="line"><span class="built_in">mv</span> *.a lib/</span><br><span class="line">gcc test.c ./lib/libmymath.a -o a.out -I ./inc</span><br><span class="line">./a.out </span><br></pre></td></tr></table></figure>
-<div class="note primary"><h5 id="动态库制作及使用">动态库制作及使用</h5>
-<ol type="1">
-<li>生成与动态库位置无关的代码</li>
-</ol>
-</div>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
       </categories>
       <tags>
         <tag>gcc编译</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++文件操作</title>
-    <url>/2022/05/07/C++%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="文件操作">文件操作</h1>
-<p>程序运行时产生的数据都属于临时数据，程序一旦结束都会释放</p>
-<p>通过文件可以将<strong>数据持久化</strong></p>
-<p>C++中对文件操作需要包含头文件<code>&lt;fstream&gt;</code></p>
-<p>文件类型分为两种：</p>
-<pre><code>1. 文本文件 - 文件以文本的ASCII码形式存储在计算机中
-2. 二进制文件 - 文件以文本的二进制形式存储在计算机中，用户一般不能直接读懂他们</code></pre>
-<p>操作文件的三大类：</p>
-<pre><code>1. ofstream: 写操作
-2. ifstream: 读操作
-3. fstream: 读写操作</code></pre>
-<h2 id="文本文件">1. 文本文件</h2>
-<h3 id="写文件">1.1 写文件</h3>
-<div class="note primary no-icon"><p><strong>写文件步骤如下:</strong></p>
-<ol type="1">
-<li>包含头文件 <code>#include &lt;fstream&gt;</code></li>
-<li>创建流对象 <code>ofstream ofs;</code></li>
-<li>打开文件 `ofs.open("文件路径", 打开方式);</li>
-<li>写数据 <code>ofs &lt;&lt; "写入的数据"</code></li>
-<li>关闭文件 <code>ofs.close()</code></li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th>打开方式</th>
-<th style="text-align: center;">解释</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ios::in</td>
-<td style="text-align: center;">为读文件而打开文件</td>
-</tr>
-<tr class="even">
-<td>ios::out</td>
-<td style="text-align: center;">为写文件而打开文件</td>
-</tr>
-<tr class="odd">
-<td>ios::ate</td>
-<td style="text-align: center;">初始位置：文件尾</td>
-</tr>
-<tr class="even">
-<td>ios::app</td>
-<td style="text-align: center;">追加方式写文件</td>
-</tr>
-<tr class="odd">
-<td>ios::trunc</td>
-<td style="text-align: center;">如果文件存在先删除，再创建</td>
-</tr>
-<tr class="even">
-<td>ios::binary</td>
-<td style="text-align: center;">二进制方式</td>
-</tr>
-</tbody>
-</table>
-<p><strong>注意：</strong> 文件打开方式可以配合使用，使用 <code>|</code>
-操作符 例如：用二进制方式写文件： <code>ios::binary|ios::in|</code></p>
-</div>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ofstream ofs;</span><br><span class="line">    ofs.<span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>, ios::out);</span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;姓名：张三&quot;</span> &lt;&lt; endl; </span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;性别：男&quot;</span> &lt;&lt; endl; </span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;年龄：18&quot;</span> &lt;&lt; endl; </span><br><span class="line"></span><br><span class="line">    ofs.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="读文件">1.2 读文件</h3>
-<div class="note primary no-icon"><p><strong>读文件步骤如下:</strong></p>
-<ol type="1">
-<li>包含头文件 <code>#include &lt;fstream&gt;</code></li>
-<li>创建流对象 <code>ifstream ifs;</code></li>
-<li>打开文件 `ifs.open("文件路径", 打开方式);</li>
-<li>查看文件是否打开成功</li>
-<li>四种方式读取</li>
-<li>关闭文件 <code>ifs.close()</code></li>
-</ol>
-</div>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ifstream ifs;</span><br><span class="line">    ifs.<span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>, ios::in);</span><br><span class="line">    <span class="keyword">if</span> (ifs.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;open file failed!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第一种</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">while</span> (ifs &gt;&gt; buf) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第二种</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">while</span> (ifs.<span class="built_in">getline</span>(buf, <span class="built_in">sizeof</span>(buf))) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第三种</span></span><br><span class="line">    string buf;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ifs, buf)) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第四种</span></span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">    <span class="keyword">while</span> ((c = ifs.<span class="built_in">get</span>()) != EOF) &#123;</span><br><span class="line">        cout &lt;&lt; c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="二进制文件">2. 二进制文件</h2>
-<p>以二进制的方式对文件进行读写操作 打开方式要指定为
-<code>ios::binary</code></p>
-<h3 id="写文件-1">2.1 写文件</h3>
-<div class="note primary no-icon"><p>二进制方式写文件主要利用流对象调用成员函数 <code>write</code></p>
-<p>函数原型：
-<code>ostream&amp; write(const char* buffer, int len);</code></p>
-<p>参数解释：字符指针buffer指向内存中一段存储空间， len
-是读写的字节数</p>
-</div>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span> _name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> _age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ofstream ofs;</span><br><span class="line">    ofs.<span class="built_in">open</span>(<span class="string">&quot;person.txt&quot;</span>, ios::out | ios::binary);</span><br><span class="line">    Person p = &#123;<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>&#125;;</span><br><span class="line">    ofs.<span class="built_in">write</span>((<span class="type">const</span> <span class="type">char</span> *)&amp;p, <span class="built_in">sizeof</span>(Person));</span><br><span class="line"></span><br><span class="line">    ofs.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="读文件-1">2.2 读文件</h3>
-<div class="note primary no-icon"><p>二进制方式读文件主要利用流对象调用成员函数 <code>read</code></p>
-<p>函数原型：
-<code>istream&amp; read(const char* buffer, int len);</code></p>
-<p>参数解释：字符指针buffer指向内存中一段存储空间， len
-是读写的字节数</p>
-</div>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span> _name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> _age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ifstream ifs;</span><br><span class="line">    ifs.<span class="built_in">open</span>(<span class="string">&quot;person.txt&quot;</span>, ios::in);</span><br><span class="line">    <span class="keyword">if</span> (!ifs.is_open) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;file open failed!&quot;</span> &lt;&lt; endl; </span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Person p;</span><br><span class="line">    ifs.<span class="built_in">read</span>((<span class="type">char</span> *)&amp;p, <span class="built_in">sizeof</span>(Person));</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;姓名: &quot;</span> &lt;&lt; p._name &lt;&lt; <span class="string">&quot;年龄：&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>C++笔记</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>09其他命令</title>
-    <url>/2022/05/09/09%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<div class="note primary no-icon"><h5 id="who-命令">who 命令</h5>
-</div>
-<div class="note primary no-icon"><h5 id="jobs-命令">jobs 命令</h5>
-<p><code>显示当前shell下正在运行哪些作业(即后台作业)</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span></span><br><span class="line"><span class="built_in">cat</span> &amp;</span><br><span class="line"><span class="built_in">jobs</span></span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="fg-bg-命令">fg bg 命令</h5>
-<p><code>前后台切换</code></p>
-</div>
-<div class="note primary no-icon"><h5 id="kill-命令">kill 命令</h5>
-</div>
-<div class="note primary no-icon"><h5 id="env-命令">env 命令</h5>
-<p><code>查看环境变量</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $<span class="variable">$shell</span></span><br><span class="line"><span class="built_in">env</span> </span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="top-命令">top 命令</h5>
-<p><code>文字版任务管理器</code></p>
-</div>
-<div class="note primary no-icon"><h5 id="passwd-命令">passwd 命令</h5>
-<p><code>设置密码</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd zhangshan</span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="ifconfig-命令">ifconfig 命令</h5>
-</div>
-<div class="note primary no-icon"><h5 id="man-命令">man 命令</h5>
-<p><code>查看手册</code></p>
-</div>
-<div class="note primary no-icon"><h5 id="clear-命令">clear 命令</h5>
-<p><code>清屏</code></p>
-</div>
-<div class="note primary no-icon"><h5 id="alias-命令">alias 命令</h5>
-<p><code>起别名</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> pg = <span class="string">&#x27;ps aux | gerp&#x27;</span></span><br></pre></td></tr></table></figure>
-<div class="note primary no-icon"><h5 id="umask-命令">umask 命令</h5>
-<p><code>掩码</code></p>
-</div>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 511</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux系统编程</category>
-      </categories>
-      <tags>
-        <tag>Linux常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -545,6 +284,30 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
 <code>gcc test.c libmymath.a -o test</code></li>
 </ol>
 </div>
+<div class="note primary no-icon"><h5 id="隐式声明">隐式声明</h5>
+<p>当编译器在编译时，碰到函数调用之前，没有发现函数定义及函数声明，编译器会帮我们进行隐式声明。</br>
+但编译器的隐式声明的返回值是 int 类型，因此若你的声明的返回值不是 int
+类型，则会报错。</br> 解决方法： - 在cpp文件中添加函数原型 -
+静态库编写者写头文件</p>
+</div>
+<div class="note primary no-icon"><h5 id="头文件守卫">头文件守卫</h5>
+<p><code>防止头文件被重复包含</code><br />
+#ifndef <em>HEAD_H</em> #define <em>HEAD_H</em> ...... #endif</p>
+</div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// mymath.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _MYMATH_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _MYMATH_H_</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sub</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">div1</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> inc</span><br><span class="line"><span class="built_in">mkdir</span> lib</span><br><span class="line"><span class="built_in">mv</span> *.h inc/</span><br><span class="line"><span class="built_in">mv</span> *.a lib/</span><br><span class="line">gcc test.c ./lib/libmymath.a -o a.out -I ./inc</span><br><span class="line">./a.out </span><br></pre></td></tr></table></figure>
+<div class="note primary"><h5 id="动态库制作及使用">动态库制作及使用</h5>
+<ol type="1">
+<li>将.c 生成.o 文件， (生成与位置无关的代码 -fPIC)
+<code>gcc -c add.c -o add.o -fPIC</code></li>
+<li>使用gcc -shared 制作动态库 `gcc -shared -o lib库名.so add.o sub.o
+div.o</li>
+<li>编译可执行程序时，指定所使用的动态库。 <code>-l: 指定库名</code>
+<code>-L：指定库路径</code>
+<code>gcc test.c -o a.out -lmymath -L./lib</code></li>
+<li>运行可执行程序 ./a.out</li>
+</ol>
+</div>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -554,29 +317,48 @@ src="https://s2.loli.net/2022/05/04/nWATK2EqVzspClM.png" /></p></li>
       </tags>
   </entry>
   <entry>
-    <title>哈夫曼编码原理及代码实现</title>
-    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
-<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
-<p>      
-哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>06创建修改用户和用户组</title>
+    <url>/2022/05/04/06%E5%88%9B%E5%BB%BA%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84/</url>
+    <content><![CDATA[<h5 id="whoami-命令">whoami 命令</h5>
+<blockquote>
+<p>查看当前用户</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/OCRfrmtYsBq4DA5.png" /></p>
+<div class="note "><h5 id="chmod-命令">chmod 命令</h5>
+<ul>
+<li>chmod [who][+|-|=][mode] 文件名</li>
+<li>[who]:</li>
+<li>u 表示用户(user), 即文件或目录所有者</li>
+<li>g 表示同组(group)用户， 即与文件属组有相同组ID的所有用户</li>
+<li>o 表示其他(others)用户</li>
+<li>a 表示所有(all)用户，它是系统默认值 数字设定：r: 4; w: 2; x:
+1。</li>
+</ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x hello.cc</span><br><span class="line"><span class="built_in">chmod</span> g-r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> o+w hello.cc</span><br><span class="line"><span class="built_in">chmod</span> a+r hello.cc</span><br><span class="line"><span class="built_in">chmod</span> 471 hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/3tgyU2rDCRTbWA8.png" /></p>
+<h5 id="chown-命令">chown 命令</h5>
+<blockquote>
+<p>修改文件或目录的所有者或所属组</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> wangwu hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/xgOX1HhsraEK3CD.png" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chgrp</span> g88 hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/04/DheubWI6CSR975l.png" /></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> nobody:nogroup hello.cc</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/05/05/Yf45k8iA6WlnyP3.png" /></p>
+<h5 id="adduser-addgroup-命令">adduser addgroup 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo adduser wangwu</span><br><span class="line">sudo addgroup g88</span><br></pre></td></tr></table></figure>
+<h5 id="deluser-delgroup-命令">deluser delgroup 命令</h5>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deluser wangwu</span><br><span class="line">delgroup g88</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据结构与算法</category>
+        <category>Linux系统编程</category>
       </categories>
       <tags>
-        <tag>C++</tag>
+        <tag>Linux常用命令</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>典型相关分析</title>
-    <url>/2022/05/13/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
   </entry>
   <entry>
     <title>BP神经网络</title>
@@ -758,5 +540,230 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
       <categories>
         <category>机器学习</category>
       </categories>
+  </entry>
+  <entry>
+    <title>C++文件操作</title>
+    <url>/2022/05/07/C++%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="文件操作">文件操作</h1>
+<p>程序运行时产生的数据都属于临时数据，程序一旦结束都会释放</p>
+<p>通过文件可以将<strong>数据持久化</strong></p>
+<p>C++中对文件操作需要包含头文件<code>&lt;fstream&gt;</code></p>
+<p>文件类型分为两种：</p>
+<pre><code>1. 文本文件 - 文件以文本的ASCII码形式存储在计算机中
+2. 二进制文件 - 文件以文本的二进制形式存储在计算机中，用户一般不能直接读懂他们</code></pre>
+<p>操作文件的三大类：</p>
+<pre><code>1. ofstream: 写操作
+2. ifstream: 读操作
+3. fstream: 读写操作</code></pre>
+<h2 id="文本文件">1. 文本文件</h2>
+<h3 id="写文件">1.1 写文件</h3>
+<div class="note primary no-icon"><p><strong>写文件步骤如下:</strong></p>
+<ol type="1">
+<li>包含头文件 <code>#include &lt;fstream&gt;</code></li>
+<li>创建流对象 <code>ofstream ofs;</code></li>
+<li>打开文件 `ofs.open("文件路径", 打开方式);</li>
+<li>写数据 <code>ofs &lt;&lt; "写入的数据"</code></li>
+<li>关闭文件 <code>ofs.close()</code></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>打开方式</th>
+<th style="text-align: center;">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ios::in</td>
+<td style="text-align: center;">为读文件而打开文件</td>
+</tr>
+<tr class="even">
+<td>ios::out</td>
+<td style="text-align: center;">为写文件而打开文件</td>
+</tr>
+<tr class="odd">
+<td>ios::ate</td>
+<td style="text-align: center;">初始位置：文件尾</td>
+</tr>
+<tr class="even">
+<td>ios::app</td>
+<td style="text-align: center;">追加方式写文件</td>
+</tr>
+<tr class="odd">
+<td>ios::trunc</td>
+<td style="text-align: center;">如果文件存在先删除，再创建</td>
+</tr>
+<tr class="even">
+<td>ios::binary</td>
+<td style="text-align: center;">二进制方式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong> 文件打开方式可以配合使用，使用 <code>|</code>
+操作符 例如：用二进制方式写文件： <code>ios::binary|ios::in|</code></p>
+</div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ofstream ofs;</span><br><span class="line">    ofs.<span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>, ios::out);</span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;姓名：张三&quot;</span> &lt;&lt; endl; </span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;性别：男&quot;</span> &lt;&lt; endl; </span><br><span class="line">    ofs &lt;&lt; <span class="string">&quot;年龄：18&quot;</span> &lt;&lt; endl; </span><br><span class="line"></span><br><span class="line">    ofs.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="读文件">1.2 读文件</h3>
+<div class="note primary no-icon"><p><strong>读文件步骤如下:</strong></p>
+<ol type="1">
+<li>包含头文件 <code>#include &lt;fstream&gt;</code></li>
+<li>创建流对象 <code>ifstream ifs;</code></li>
+<li>打开文件 `ifs.open("文件路径", 打开方式);</li>
+<li>查看文件是否打开成功</li>
+<li>四种方式读取</li>
+<li>关闭文件 <code>ifs.close()</code></li>
+</ol>
+</div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ifstream ifs;</span><br><span class="line">    ifs.<span class="built_in">open</span>(<span class="string">&quot;test.txt&quot;</span>, ios::in);</span><br><span class="line">    <span class="keyword">if</span> (ifs.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;open file failed!&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第一种</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">while</span> (ifs &gt;&gt; buf) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第二种</span></span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">while</span> (ifs.<span class="built_in">getline</span>(buf, <span class="built_in">sizeof</span>(buf))) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第三种</span></span><br><span class="line">    string buf;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">getline</span>(ifs, buf)) &#123;</span><br><span class="line">        cout &lt;&lt; buf &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 第四种</span></span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">    <span class="keyword">while</span> ((c = ifs.<span class="built_in">get</span>()) != EOF) &#123;</span><br><span class="line">        cout &lt;&lt; c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二进制文件">2. 二进制文件</h2>
+<p>以二进制的方式对文件进行读写操作 打开方式要指定为
+<code>ios::binary</code></p>
+<h3 id="写文件-1">2.1 写文件</h3>
+<div class="note primary no-icon"><p>二进制方式写文件主要利用流对象调用成员函数 <code>write</code></p>
+<p>函数原型：
+<code>ostream&amp; write(const char* buffer, int len);</code></p>
+<p>参数解释：字符指针buffer指向内存中一段存储空间， len
+是读写的字节数</p>
+</div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span> _name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> _age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ofstream ofs;</span><br><span class="line">    ofs.<span class="built_in">open</span>(<span class="string">&quot;person.txt&quot;</span>, ios::out | ios::binary);</span><br><span class="line">    Person p = &#123;<span class="string">&quot;张三&quot;</span>, <span class="number">18</span>&#125;;</span><br><span class="line">    ofs.<span class="built_in">write</span>((<span class="type">const</span> <span class="type">char</span> *)&amp;p, <span class="built_in">sizeof</span>(Person));</span><br><span class="line"></span><br><span class="line">    ofs.<span class="built_in">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="读文件-1">2.2 读文件</h3>
+<div class="note primary no-icon"><p>二进制方式读文件主要利用流对象调用成员函数 <code>read</code></p>
+<p>函数原型：
+<code>istream&amp; read(const char* buffer, int len);</code></p>
+<p>参数解释：字符指针buffer指向内存中一段存储空间， len
+是读写的字节数</p>
+</div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">char</span> _name[<span class="number">64</span>];</span><br><span class="line">    <span class="type">int</span> _age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ifstream ifs;</span><br><span class="line">    ifs.<span class="built_in">open</span>(<span class="string">&quot;person.txt&quot;</span>, ios::in);</span><br><span class="line">    <span class="keyword">if</span> (!ifs.is_open) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;file open failed!&quot;</span> &lt;&lt; endl; </span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Person p;</span><br><span class="line">    ifs.<span class="built_in">read</span>((<span class="type">char</span> *)&amp;p, <span class="built_in">sizeof</span>(Person));</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;姓名: &quot;</span> &lt;&lt; p._name &lt;&lt; <span class="string">&quot;年龄：&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C++笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈夫曼编码原理及代码实现</title>
+    <url>/2022/05/06/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%8F%8A%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="哈夫曼编码原理及实现">哈夫曼编码原理及实现</h1>
+<h4 id="哈夫曼编码应用及原理">1. 哈夫曼编码应用及原理</h4>
+<p>      
+哈夫曼编码常用来压缩数据，其原理是利用哈夫曼编码将原有的编码总长度进行压缩。一般情况下，编码长度是一致的，这就导致了无论一个字符在该文本文件出现的频率是多少，其编码长度不变。如果我们可以对出现频率较高的字符进行短编码，这样我们就能降低该文件的编码总长度。举个例子，假设我们有如下的文本文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>典型相关分析</title>
+    <url>/2022/05/13/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>08安装卸载、压缩解压软件</title>
+    <url>/2022/05/06/08%E5%AE%89%E8%A3%85%E5%8D%B8%E8%BD%BD%E3%80%81%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<div class="note primary no-icon"><h5 id="apt-get-命令">apt-get 命令</h5>
+<p><code>安装、卸载</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update // 更新</span><br><span class="line">pt-get install 软件名</span><br><span class="line">apt-get remove 软件名 // 卸载</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="deb包安装">deb包安装</h5>
+<p><code>安装、卸载</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i xxx.deb // 安装deb包</span><br><span class="line">dpkg -r xxx.deb // 卸载deb包</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="源码安装">源码安装</h5>
+<ol type="1">
+<li>解压缩源代码包</li>
+<li>cd dir</li>
+<li>./configure //检测文件是否缺失，创建Makefile，检测编译环境</li>
+<li>make // 编译源码，生成库和可执行程序</li>
+<li>sudo make install // 把库和可执行程序，安装到系统路径下</li>
+<li>sudo distclean // 删除和卸载软件</li>
+</ol>
+</div>
+<div class="note primary no-icon"><h5 id="tar-命令">tar 命令</h5>
+<p><code>tar打包</code> <br> <code>gzip压缩</code>： 只能压缩一个文件
+<br> <code>bzip压缩</code>: 只能压缩一个文件</p>
+<ul>
+<li>z：用gzip压缩</li>
+<li>c: create</li>
+<li>v: 显示压缩过程</li>
+<li>f: file</li>
+<li>j：用bzip2压缩</li>
+<li>x: 解压</li>
+</ul>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zcvf 要生成的压缩包名 压缩材料 </span><br><span class="line">tar -zxvf 压缩包名 </span><br><span class="line"></span><br><span class="line">tar zcvf test.tar.gz file1 dir2 使用gzip方式压缩</span><br><span class="line">tar jcvf test.tar.gz file1 dir2 使用bzip2方式压缩</span><br><span class="line"></span><br><span class="line">tar zxvf test.tar.gz 使用gzip方式解压</span><br><span class="line">tar jxvf test.tar.gz 使用bzip方式解压</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="rar-unrar-命令">rar unrar 命令</h5>
+<p><code>压缩解压</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rar a -r test.rar hello.cc stdio.h</span><br><span class="line">unrar x test.rar</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="zip-unzip-命令">zip unzip 命令</h5>
+<p><code>压缩解压</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">zip -r test.zip hello.cc stdio.h</span><br><span class="line">unzip test.zip</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>09其他命令</title>
+    <url>/2022/05/09/09%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<div class="note primary no-icon"><h5 id="who-命令">who 命令</h5>
+</div>
+<div class="note primary no-icon"><h5 id="jobs-命令">jobs 命令</h5>
+<p><code>显示当前shell下正在运行哪些作业(即后台作业)</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span></span><br><span class="line"><span class="built_in">cat</span> &amp;</span><br><span class="line"><span class="built_in">jobs</span></span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="fg-bg-命令">fg bg 命令</h5>
+<p><code>前后台切换</code></p>
+</div>
+<div class="note primary no-icon"><h5 id="kill-命令">kill 命令</h5>
+</div>
+<div class="note primary no-icon"><h5 id="env-命令">env 命令</h5>
+<p><code>查看环境变量</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> $<span class="variable">$shell</span></span><br><span class="line"><span class="built_in">env</span> </span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="top-命令">top 命令</h5>
+<p><code>文字版任务管理器</code></p>
+</div>
+<div class="note primary no-icon"><h5 id="passwd-命令">passwd 命令</h5>
+<p><code>设置密码</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd zhangshan</span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="ifconfig-命令">ifconfig 命令</h5>
+</div>
+<div class="note primary no-icon"><h5 id="man-命令">man 命令</h5>
+<p><code>查看手册</code></p>
+</div>
+<div class="note primary no-icon"><h5 id="clear-命令">clear 命令</h5>
+<p><code>清屏</code></p>
+</div>
+<div class="note primary no-icon"><h5 id="alias-命令">alias 命令</h5>
+<p><code>起别名</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> pg = <span class="string">&#x27;ps aux | gerp&#x27;</span></span><br></pre></td></tr></table></figure>
+<div class="note primary no-icon"><h5 id="umask-命令">umask 命令</h5>
+<p><code>掩码</code></p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 511</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
   </entry>
 </search>
