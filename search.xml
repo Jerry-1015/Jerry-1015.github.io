@@ -403,8 +403,39 @@ div.o</li>
 <li>编译可执行程序时，指定所使用的动态库。 <code>-l: 指定库名</code>
 <code>-L：指定库路径</code>
 <code>gcc test.c -o a.out -lmymath -L./lib</code></li>
-<li>运行可执行程序 ./a.out</li>
+<li>运行可执行程序 ./a.out 出错</li>
 </ol>
+<ul>
+<li>原因：
+<ul>
+<li>链接器: 工作于链接阶段, 工作时需要 -l -L 支持</li>
+<li>动态链接器: 工作于程序运行阶段,
+工作时需要提供动态库所在目录位置。</li>
+<li>解决方法：</li>
+</ul>
+<ol type="1">
+<li>通过环境变量, <code>export LD_LIBRARY_PATH=动态库路径</code> ./a.out
+成功 (临时生效，终端重启环境变量失效)</li>
+<li>永久生效 写入终端配置文件。 <code>.bashrc</code>
+建议使用绝对路径</li>
+</ol>
+<ul>
+<li>vim ~/.bashrc</li>
+<li>写入 export LD_LIBARARY_PATH=动态库路径 保存</li>
+<li>. .bashrc/ sorce .bashrc / 重启终端 ---&gt; 让修改后的 .bashrc
+生效</li>
+<li>./a.out 成功</li>
+</ul>
+<ol start="3" type="1">
+<li>拷贝自定义动态库到 /lib (标准C库所在目录位置)</li>
+<li>配置文件法
+<ul>
+<li>vi /etc/ld.so.conf 添加路径</li>
+<li>sudo vi /etc/ld.so.cnf</li>
+<li>sudo ldconfig -v</li>
+</ul></li>
+</ol></li>
+</ul>
 </div>
 ]]></content>
       <categories>
@@ -468,7 +499,7 @@ div.o</li>
 <h5 id="概述">1.1 概述</h5>
 <p>​ <strong>人工神经网络</strong>无需事先确定输入输出之间<a
 href="">映射关系</a>的数学方程，仅通过自身的训练，学习某种规则，在给定输入值时得到最接近期望输出值的结果。作为一种智能信息处理系统，人工神经网络实现其功能的核心是算法。BP神经网络是一种按==误差反向传播==(简称误差反传)训练的多层前馈网络，其算法称为<a
-href="https://baike.baidu.com/item/BP算法">BP算法</a>，它的基本思想是==梯度下降法==，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。
+href="https://baike.baidu.com/item/BP算法">BP算法</a>，它的基本思想是==梯度下降法==，利用梯度搜索技术，以期使网络的实际输出值和期望输出值的误差均方差为最小。<br>
 ​ <strong>BP神经网络的计算过程</strong>由<a href="">正向计算过程</a>和<a
 href="">反向计算过程</a>组成。正向传播过程，输入模式从输入层经隐单元层逐层处理，并转向输出层，每一层神经元的状态只影响下一层神经元的状态。如果在输出层不能得到期望的输出，则转入反向传播，将误差信号沿原来的连接通路返回，通过修改各神经元的权值，使得误差信号最小。</p>
 <h5 id="算法分析">1.2 算法分析</h5>
@@ -761,10 +792,147 @@ href="https://www.bilibili.com/video/BV11K4y1h7MD?from=search&amp;seid=838497742
   <entry>
     <title>典型相关分析</title>
     <url>/2022/05/13/%E5%85%B8%E5%9E%8B%E7%9B%B8%E5%85%B3%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[
+    <content><![CDATA[<h1 id="典型相关分析">典型相关分析</h1>
+<h4 id="算法原理">1. 算法原理</h4>
+<h6 id="概述">1.1 概述</h6>
+<p><strong>典型相关分析</strong>
+主要用于研究两组变量之间的相关关系。典型相关分析的思想是借助主成分分析思想，对每一组变量分别寻找<font color = red>线性组合</font>，使生成的新的综合变量能代表原始变量大部分的信息，同时，与另一组变量生成新的综合变量的相关程度最大，这一组新的综合变量称为第一对配对；同样的方法，第二对配对选取的是与前一对线性组合不相关的线性组合，而这对线性组合本身具有最大的相关系数，如此继续下去，直到两组变量之间的相关性提取完毕。这些选出的线性组合配对称为典型变量，它们之间的相关系数称为<strong>典型相关系数</strong>。</p>
+<h5 id="案例分析">1.2 案例分析</h5>
+<p>在研究交通运输与经济发展的关系时，可以使用典型相关分析。 <img
+src="../../public/images/article_images/dian1.png" />
+衡量交通运输变化的记为第一组变量，反应经济发展为第二组变量(两组变量个数不需要相同)：</p>
+<table>
+<thead>
+<tr class="header">
+<th>第一组变量</th>
+<th>解释</th>
+<th>第二组变量</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_1\)</span></td>
+<td>客运量/万人</td>
+<td><span class="math inline">\(y_1\)</span></td>
+<td>人均地区生产总值/亿元</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_2\)</span></td>
+<td>货运量/万吨</td>
+<td><span class="math inline">\(y_2\)</span></td>
+<td>财政总收入/亿元</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_3\)</span></td>
+<td>通航点/个</td>
+<td><span class="math inline">\(y_3\)</span></td>
+<td>旅游总收入/亿元</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_4\)</span></td>
+<td>水运量/万吨</td>
+<td><span class="math inline">\(y_4\)</span></td>
+<td>农村常住居民可支配收入/元</td>
+</tr>
+</tbody>
+</table>
+<p>典型相关分析将各组变量进行线性组合： <span class="math display">\[
+U= \alpha_1x_1 + \alpha_2x_2 + \alpha_3x_3 + \alpha_4x_4 \\
+V = \beta_1y_1 + \beta_2y_2 + \beta_3y_3 + \beta_4y_4
+\]</span> 目的是找到使得新产生的综合变量 <span
+class="math inline">\(U\)</span> 和 <span
+class="math inline">\(V\)</span> 的相关系数最大的线性组合。
+为了方便，我们记线性组合系数为： <span class="math display">\[
+\alpha&#39; = (\alpha_1, \alpha_2, \alpha_3, \alpha_4) \\
+\beta&#39; = (\beta_1, \beta_2, \beta_3, \beta_4)
+\]</span> 也就是我们要求的是： <span class="math display">\[
+\argmax_{\alpha, \beta} Corr(U,V)
+\]</span> 这样就得到使得 <span class="math inline">\(U\)</span> 和 <span
+class="math inline">\(V\)</span> 之间相关系数最大的线性组合系数 <span
+class="math inline">\(\alpha\)</span> 和 <span
+class="math inline">\(\beta\)</span>。
+接着我们再寻找新的线性组合使得到的新的综合变量 <span
+class="math inline">\(U_1\)</span> 和 <span
+class="math inline">\(V_1\)</span> 分别与 <span
+class="math inline">\(U\)</span> 和 <span
+class="math inline">\(V\)</span> 不相关且它们之间的相关系数最大。
+不断重复上述过程，直到无法再找到新的线性组合得到的综合变量使得与以往的综合变量都不相关。<br>
+该案例得到的结果如图： <img
+src="../../public/images/article_images/dian2.png" /></p>
+<p>对该结果的解释为： &gt;  从表 5
+可以得出，典型相关系数最大的是第一对典型变量，具有明显的显著性意义，反应了交通运输的线性组合和经济发展的线性组合之间具有很大的相关性。
+  在第一对典型变量（<span class="math inline">\(U_1\)</span>和 <span
+class="math inline">\(V_1\)</span>）的数学表达式中，<span
+class="math inline">\(U_1\)</span>为交通运输的线性组合，该组合中货运量（<span
+class="math inline">\(x_2\)</span>）、通航点（<span
+class="math inline">\(x_3\)</span>）和水运量（<span
+class="math inline">\(x_4\)</span>）的载荷值较大，说明主要受这三个变量的影响；<span
+class="math inline">\(V_1\)</span>为 4
+个表示经济发展指标的线性组合，其中 4 个变量的载荷值都比较大，说明 <span
+class="math inline">\(V_1\)</span> 受到 4 个变量的影响。
+  在第二对典型变量的数学表达式中，<span
+class="math inline">\(R2=0.981\)</span>，线性组合 <span
+class="math inline">\(U_2\)</span>中，客运量（<span
+class="math inline">\(x_1\)</span>）的载荷值最大；在线性组合 <span
+class="math inline">\(V_2\)</span> 中，旅游收入(<span
+class="math inline">\(y_3\)</span>)的载荷值最大，说明客运量对旅游的收入贡献值很大，交通的发展带动了旅游的发展，提高了旅游的收入。
+  在第三对典型变量（<span class="math inline">\(U_2\)</span>和 <span
+class="math inline">\(V_2\)</span>）的数_学表达式, <span
+class="math inline">\(R3=0.941\)</span>，线性组合<span
+class="math inline">\(U_3\)</span>中，货运量（<span
+class="math inline">\(x_2\)</span>）的载荷值最大，说明<span
+class="math inline">\(U_3\)</span>受货运量的影响较大；在线性组合<span
+class="math inline">\(V_3\)</span>中，财政总收入（<span
+class="math inline">\(y_2\)</span>）的载荷值最大，说明了货运量对财政总收入有很大的影响。
+  综上可以看出：地区的发展和交通的发展具有很大的关联度，一个地区想要得到很好的发展，交通的发展是一个重要方面。<br />
+##### 1.3 算法分析   假设有一组变量 <span
+class="math inline">\(X_1,\dots,X_p\)</span>, 另一组变量 <span
+class="math inline">\(Y_1,\dots,Y_q\)</span>。利用主成分分析的思想，也就是求
+<span class="math inline">\(\alpha =
+(\alpha_1,\cdots,\alpha_p)&#39;\)</span> 和 <span
+class="math inline">\(\beta =
+(\beta_1,\cdots,\beta_q)\)</span>,使得新的综合变量 <span
+class="math display">\[
+U = \alpha_1X_1 + \alpha_2X_2 + \cdots + \alpha_pX_p
+\]</span> 和 <span class="math display">\[
+V = \beta_1Y_1 + \beta_2Y_2 + \cdots + \beta_qY_q
+\]</span> 之间有最可能大的相关。</p>
+<p>   设 $$</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
+  </entry>
+  <entry>
+    <title>12 gdb调试基础指令</title>
+    <url>/2022/06/01/12gdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<div class="note primary no-icon">
+</div>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>gdb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>更新yum源</title>
+    <url>/2022/06/10/%E6%9B%B4%E6%96%B0yum%E6%BA%90/</url>
+    <content><![CDATA[<div class="note info no-icon"><p>在更新yum源的时候，按照网上的教程，出现'404 not found` 的情况,
+如下图。
+原因是源所在网址已更换，但配置文件里的没有改变，所以无法下载。</p>
+</div>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Errors during downloading metadata <span class="keyword">for</span> repository <span class="string">&#x27;BaseOS&#x27;</span>:</span><br><span class="line">  - Status code: 404 <span class="keyword">for</span> https://mirrors.cloud.tencent.com/centos/1.0/BaseOS/x86_64/os/repodata/repomd.xml (IP: 123.125.9.52)</span><br><span class="line">Error: Failed to download metadata <span class="keyword">for</span> repo <span class="string">&#x27;BaseOS&#x27;</span>: Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried</span><br></pre></td></tr></table></figure>
+<h4 id="解决方法"><font color=purplse>解决方法</font></h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d</span><br><span class="line"><span class="built_in">mv</span> Centos-Base.repo Centos-Base.repo.bk // 备份原先配置</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos8_base.repo // 使用腾讯镜像</span><br><span class="line">vim Centos-Base.repo </span><br><span class="line">:%s/<span class="variable">$releasever</span>/8/g      </span><br><span class="line">:wq</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>遇见问题</category>
+      </categories>
+      <tags>
+        <tag>yum</tag>
+      </tags>
   </entry>
 </search>
