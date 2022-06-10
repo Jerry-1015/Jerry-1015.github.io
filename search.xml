@@ -929,6 +929,9 @@ V = \beta_1Y_1 + \beta_2Y_2 + \cdots + \beta_qY_q
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d</span><br><span class="line"><span class="built_in">mv</span> Centos-Base.repo Centos-Base.repo.bk // 备份原先配置</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos8_base.repo // 使用腾讯镜像</span><br><span class="line">vim Centos-Base.repo </span><br><span class="line">:%s/<span class="variable">$releasever</span>/8/g      </span><br><span class="line">:wq</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 <div class="note warning no-icon"><p>把Centos-Base文件中需要加载的repo对应的enable置1</p>
 </div>
+<h4 id="简单操作">简单操作</h4>
+<p><a
+href="https://www.cnblogs.com/weiweivip666/p/16259946.html"></a></p>
 ]]></content>
       <categories>
         <category>遇见问题</category>

@@ -356,7 +356,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-06-10 12:10:27 / 修改时间：12:59:28" itemprop="dateCreated datePublished" datetime="2022-06-10T12:10:27+08:00">2022-06-10</time>
+      <time title="创建时间：2022-06-10 12:10:27 / 修改时间：15:04:47" itemprop="dateCreated datePublished" datetime="2022-06-10T12:10:27+08:00">2022-06-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -375,7 +375,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>665</span>
+      <span>669</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -402,6 +402,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d</span><br><span class="line"><span class="built_in">mv</span> Centos-Base.repo Centos-Base.repo.bk // 备份原先配置</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos8_base.repo // 使用腾讯镜像</span><br><span class="line">vim Centos-Base.repo </span><br><span class="line">:%s/<span class="variable">$releasever</span>/8/g      </span><br><span class="line">:wq</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 <div class="note warning no-icon"><p>把Centos-Base文件中需要加载的repo对应的enable置1</p>
 </div>
+<h4 id="简单操作">简单操作</h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/weiweivip666/p/16259946.html"></a></p>
 
       
     </div>
