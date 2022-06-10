@@ -943,9 +943,8 @@ href="https://www.cnblogs.com/weiweivip666/p/16259946.html"></a></p>
   <entry>
     <title>rpm强制安装</title>
     <url>/2022/06/10/rpm%E5%BC%BA%E5%88%B6%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<div class="note info no-icon"><p>有时候在使用 <code>rpm</code> 进行包安装时, 会提示缺少依赖,
-然而你要安装的正是缺少的那个包, 这样就陷入死循环了, 可用通过增加参数
-<code>--nodeps --force</code>来解决。</p>
+    <content><![CDATA[<div class="note info no-icon"><p>有时候在使用 <code>rpm</code> 进行包安装时, 会提示缺少依赖,,
+可通过增加参数 <code>--nodeps --force</code>来强制安装。</p>
 </div>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -ivh package.rpm --nodeps --force</span><br></pre></td></tr></table></figure>
 ]]></content>
