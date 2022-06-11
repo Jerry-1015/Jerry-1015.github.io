@@ -256,9 +256,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-06-10 14:35:39 / 修改时间：15:46:28" itemprop="dateCreated datePublished" datetime="2022-06-10T14:35:39+08:00">2022-06-10</time>
+      <time title="创建时间：2022-06-10 14:35:39" itemprop="dateCreated datePublished" datetime="2022-06-10T14:35:39+08:00">2022-06-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-11 11:53:17" itemprop="dateModified" datetime="2022-06-11T11:53:17+08:00">2022-06-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,11 +301,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <div class="note info no-icon"><p>有时候在使用 <code>rpm</code> 进行包安装时, 会提示缺少依赖,,
-可通过增加参数 <code>--nodeps --force</code>来强制安装。</p>
-</div>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh package.rpm --nodeps --force</span><br></pre></td></tr></table></figure>
-
+          <p>强制安装 rpm 文件</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/10/rpm%E5%BC%BA%E5%88%B6%E5%AE%89%E8%A3%85/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -353,9 +363,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-06-10 12:10:27 / 修改时间：17:20:36" itemprop="dateCreated datePublished" datetime="2022-06-10T12:10:27+08:00">2022-06-10</time>
+      <time title="创建时间：2022-06-10 12:10:27" itemprop="dateCreated datePublished" datetime="2022-06-10T12:10:27+08:00">2022-06-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-11 11:52:39" itemprop="dateModified" datetime="2022-06-11T11:52:39+08:00">2022-06-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,19 +408,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <div class="note info no-icon"><p>在更新yum源的时候，按照网上的教程，出现'404 not found` 的情况,
-如下图。
-原因是源所在网址已更换，但配置文件里的没有改变，所以无法下载。</p>
-</div>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Errors during downloading metadata <span class="keyword">for</span> repository <span class="string">&#x27;BaseOS&#x27;</span>:</span><br><span class="line">  - Status code: 404 <span class="keyword">for</span> https://mirrors.cloud.tencent.com/centos/1.0/BaseOS/x86_64/os/repodata/repomd.xml (IP: 123.125.9.52)</span><br><span class="line">Error: Failed to download metadata <span class="keyword">for</span> repo <span class="string">&#x27;BaseOS&#x27;</span>: Cannot download repomd.xml: Cannot download repodata/repomd.xml: All mirrors were tried</span><br></pre></td></tr></table></figure>
-<h4 id="解决方法"><font color=purplse>解决方法</font></h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/yum.repos.d</span><br><span class="line"><span class="built_in">mv</span> Centos-Base.repo Centos-Base.repo.bk // 备份原先配置</span><br><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos8_base.repo // 使用腾讯镜像</span><br><span class="line">vim Centos-Base.repo </span><br><span class="line">:%s/<span class="variable">$releasever</span>/8/g      </span><br><span class="line">:wq</span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-<div class="note warning no-icon"><p>把Centos-Base文件中需要加载的repo对应的enable置1</p>
-</div>
-<h4 id="简单操作">简单操作</h4>
-<p><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/weiweivip666/p/16259946.html">yum源更新</a></p>
-
+          <p>更新yum源</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/10/%E6%9B%B4%E6%96%B0yum%E6%BA%90/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -466,7 +478,7 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/weiweivip666/p/1625
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-11 11:48:35" itemprop="dateModified" datetime="2022-06-11T11:48:35+08:00">2022-06-11</time>
+      <time title="修改时间：2022-06-11 11:55:45" itemprop="dateModified" datetime="2022-06-11T11:55:45+08:00">2022-06-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -485,7 +497,7 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/weiweivip666/p/1625
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>165</span>
+      <span>226</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
