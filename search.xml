@@ -973,7 +973,10 @@ href="https://www.cnblogs.com/weiweivip666/p/16259946.html">yum源更新</a></p>
 </div>
 <details class="note primary no-icon"><summary><p>1个规则</p>
 </summary>
-<p>目标：依赖条件 （一个tab缩进） 命令</p>
+<p>目标：依赖条件 （一个tab缩进） 命令 1.
+目标的时间必须晚于依赖条件的时间,否则，更新目标 <br> 2.
+依赖条件如果不存在,找寻新的规则去产生依赖 <br> ALL:
+指定makefile文件的终极目标</p>
 
 </details>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// hello.</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;hello world!\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
