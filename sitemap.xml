@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://jerry-1015.github.io/2022/06/11/13makefile%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2022-06-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jerry-1015.github.io/2022/06/10/rpm%E5%BC%BA%E5%88%B6%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2022-06-11</lastmod>
@@ -243,6 +252,13 @@
   
   <url>
     <loc>https://jerry-1015.github.io/tags/rpm/</loc>
+    <lastmod>2022-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jerry-1015.github.io/tags/makefile/</loc>
     <lastmod>2022-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

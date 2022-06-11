@@ -914,6 +914,11 @@ V = \beta_1Y_1 + \beta_2Y_2 + \cdots + \beta_qY_q
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gcc gdbtest.c -o gdbtest -g // 增加 —g 参数</span><br><span class="line">gdb gdbtest</span><br><span class="line">list 1 // 从第一行开始查看</span><br><span class="line">list // 继续查看剩下部分, 可简写为 l</span><br><span class="line"><span class="built_in">break</span>/b 50 // 设置断点</span><br><span class="line">run/r // 执行</span><br><span class="line">n/next // 下一条指令 (会越过函数)</span><br><span class="line">s/step // 下一条指令 (会进入函数)</span><br><span class="line">p/print i // 查看指定变量的值</span><br><span class="line">until 16 // 跳到指定位置</span><br><span class="line"><span class="built_in">continue</span> // 继续执行</span><br><span class="line">quit // 退出</span><br></pre></td></tr></table></figure>
 
 </details>
+<details class="note primary no-icon"><summary><p>其他指令</p>
+</summary>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">run //使用 `run` 查找段错误出现位置</span><br><span class="line">start // 从第一行开始单步调试</span><br><span class="line">finish // 结束函数调用 </span><br><span class="line"><span class="built_in">set</span> args // 设置mian函数命令行参数</span><br><span class="line">run 字串1 字串2 ... // 设置mian函数命令行参数</span><br><span class="line">info b // 查看断点信息表</span><br><span class="line">b 39 <span class="keyword">if</span> i = 5 // 设置条件断点</span><br><span class="line">ptype arr[k] // 查看变量类型</span><br><span class="line">backtrace // 查看函数的调用的栈帧和层级关系</span><br><span class="line">frame // 根据栈帧编号，切换栈帧</span><br><span class="line">display // 设置跟踪变量</span><br><span class="line">undisplay //取消设置跟踪变量, 使用跟踪变量的编号</span><br><span class="line">delete // 删除断点</span><br></pre></td></tr></table></figure>
+
+</details>
 ]]></content>
       <categories>
         <category>Linux系统编程</category>
@@ -958,6 +963,19 @@ href="https://www.cnblogs.com/weiweivip666/p/16259946.html">yum源更新</a></p>
       </categories>
       <tags>
         <tag>rpm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>13 makefile项目管理</title>
+    <url>/2022/06/11/13makefile%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<div class="note info no-icon">
+</div>
+]]></content>
+      <categories>
+        <category>Linux系统编程</category>
+      </categories>
+      <tags>
+        <tag>makefile</tag>
       </tags>
   </entry>
 </search>
