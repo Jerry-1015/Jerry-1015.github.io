@@ -31,7 +31,7 @@
 <meta property="og:description" content="Linux系统编程笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-01T12:40:01.352Z">
-<meta property="article:modified_time" content="2022-06-11T06:41:43.481Z">
+<meta property="article:modified_time" content="2022-06-12T06:51:41.622Z">
 <meta property="article:author" content="Jerry">
 <meta property="article:tag" content="gdb">
 <meta name="twitter:card" content="summary">
@@ -268,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-06-11 14:41:43" itemprop="dateModified" datetime="2022-06-11T14:41:43+08:00">2022-06-11</time>
+      <time title="修改时间：2022-06-12 14:51:41" itemprop="dateModified" datetime="2022-06-12T14:51:41+08:00">2022-06-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -294,7 +294,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>501</span>
+      <span>515</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -317,12 +317,12 @@
 </div>
 <details class="note primary no-icon"><summary><p>基础指令</p>
 </summary>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">gcc gdbtest.c -o gdbtest -g // 增加 —g 参数</span><br><span class="line">gdb gdbtest</span><br><span class="line">list 1 // 从第一行开始查看</span><br><span class="line">list // 继续查看剩下部分, 可简写为 l</span><br><span class="line"><span class="built_in">break</span>/b 50 // 设置断点</span><br><span class="line">run/r // 执行</span><br><span class="line">n/next // 下一条指令 (会越过函数)</span><br><span class="line">s/step // 下一条指令 (会进入函数)</span><br><span class="line">p/print i // 查看指定变量的值</span><br><span class="line">until 16 // 跳到指定位置</span><br><span class="line"><span class="built_in">continue</span> // 继续执行</span><br><span class="line">quit // 退出</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gcc gdbtest.c -o gdbtest -g // 增加 —g 参数</span><br><span class="line">gdb gdbtest</span><br><span class="line">list 1 // 从第一行开始查看</span><br><span class="line">list // 继续查看剩下部分, 可简写为 l</span><br><span class="line"><span class="built_in">break</span>/b 50 // 设置断点</span><br><span class="line">run/r // 执行</span><br><span class="line">n/next // 下一条指令 (会越过函数)</span><br><span class="line">s/step // 下一条指令 (会进入函数)</span><br><span class="line">p/print i // 查看指定变量的值</span><br><span class="line">until 16 // 跳到指定位置</span><br><span class="line"><span class="built_in">continue</span> // 继续执行</span><br><span class="line">finish // 结束函数调用 </span><br><span class="line">quit // 退出</span><br></pre></td></tr></table></figure>
 
 </details>
 <details class="note primary no-icon"><summary><p>其他指令</p>
 </summary>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">run //使用 `run` 查找段错误出现位置</span><br><span class="line">start // 从第一行开始单步调试</span><br><span class="line">finish // 结束函数调用 </span><br><span class="line"><span class="built_in">set</span> args // 设置mian函数命令行参数</span><br><span class="line">run 字串1 字串2 ... // 设置mian函数命令行参数</span><br><span class="line">info b // 查看断点信息表</span><br><span class="line">b 39 <span class="keyword">if</span> i = 5 // 设置条件断点</span><br><span class="line">ptype arr[k] // 查看变量类型</span><br><span class="line">backtrace // 查看函数的调用的栈帧和层级关系</span><br><span class="line">frame // 根据栈帧编号，切换栈帧</span><br><span class="line">display // 设置跟踪变量</span><br><span class="line">undisplay //取消设置跟踪变量, 使用跟踪变量的编号</span><br><span class="line">delete // 删除断点</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">run //使用 `run` 查找段错误出现位置</span><br><span class="line">start // 从第一行开始单步调试</span><br><span class="line"><span class="built_in">set</span> args // 设置mian函数命令行参数(在start、run之前)</span><br><span class="line">run 字串1 字串2 ... // 设置mian函数命令行参数</span><br><span class="line">info b // 查看断点信息表</span><br><span class="line">b 39 <span class="keyword">if</span> i = 5 // 设置条件断点</span><br><span class="line">ptype arr[k] // 查看变量类型</span><br><span class="line">backtrace // 查看函数的调用的栈帧和层级关系</span><br><span class="line">frame // 根据栈帧编号，切换栈帧</span><br><span class="line">display // 设置跟踪变量</span><br><span class="line">undisplay //取消设置跟踪变量, 使用跟踪变量的编号</span><br><span class="line">delete // 删除断点</span><br></pre></td></tr></table></figure>
 
 </details>
 
@@ -388,7 +388,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
